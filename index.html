@@ -3,107 +3,68 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>BET300 · Raspadita</title>
-<meta name="theme-color" content="#120a1a"/>
+<title>BET300 · Raspaditas</title>
+<meta name="theme-color" content="#0a0f1f"/>
 <style>
 :root{
-  --bg1:#ff8a2e; --bg2:#ffb86a; --panel:#171222; --panel2:#120d1a; --border:#2a2540;
-  --text:#eef2ff; --muted:#aab0d6; --ok:#25D366; --accent:#6f5bff; --gold:#ffd166;
+  --bg1:#ff8a2e; --bg2:#ffb86a; --panel:#161329; --panel2:#110f20; --border:#28224a;
+  --text:#eef2ff; --muted:#aab0d6; --ok:#25D366; --accent:#7c59ff; --cyan:#22d3ee;
 }
-*{box-sizing:border-box}
-html,body{height:100%}
+*{box-sizing:border-box} html,body{height:100%}
 body{
   margin:0;color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto;
-  background:
-    radial-gradient(1200px 600px at 50% -10%, rgba(255,255,255,.12), transparent),
-    linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 25%, #0d0a16 80%, #0b0a14 100%);
+  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 20%,#0d0a16 80%,#0b0a14 100%);
 }
-.container{max-width:980px;margin:6px auto 88px;padding:0 10px}
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.04),transparent 30%), var(--panel2);
-  border:1px solid var(--border); border-radius:18px; padding:10px; box-shadow:0 15px 40px rgba(0,0,0,.35)
-}
-@media(min-width:900px){.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px}}
-@media(max-width:520px){.card{border-radius:10px}}
-
-.head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
-.brand{font-weight:900;letter-spacing:.5px;font-size:24px;display:flex;align-items:center;gap:8px}
-.brand .logo{
-  display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;
-  background:radial-gradient(80% 80% at 50% 30%, #7c4dff, #22d3ee);
-  box-shadow:0 0 18px rgba(124,77,255,.65), inset 0 0 14px rgba(255,255,255,.25);
-  font-weight:900;color:#0b0f1e
-}
-.pill{background:linear-gradient(90deg,rgba(124,77,255,.18),rgba(0,209,255,.18));border:1px solid var(--border);
+.container{max-width:980px;margin:10px auto 88px;padding:0 10px}
+.card{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:10px;box-shadow:0 15px 40px rgba(0,0,0,.35)}
+@media(min-width:900px){.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:10px}}
+.head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.brand{font-weight:900;letter-spacing:.4px;font-size:22px;display:flex;gap:8px;align-items:center}
+.brand .logo{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
+  background:radial-gradient(70% 70% at 50% 30%,#7c59ff,#22d3ee);box-shadow:0 0 16px rgba(124,89,255,.6);font-weight:900;color:#08101c}
+.pill{background:linear-gradient(90deg,rgba(124,89,255,.18),rgba(34,211,238,.18));border:1px solid var(--border);
   border-radius:999px;padding:6px 8px;font-size:12px;color:var(--muted)}
 .pill.time{display:flex;gap:6px;align-items:center}
-.pill.sound{cursor:pointer;user-select:none}
-.count{display:inline-flex;gap:6px;align-items:center;padding:3px 8px;border-radius:999px;background:rgba(255,204,0,.15);
-  border:1px solid rgba(255,204,0,.35);color:#ffe27a;font-weight:700;font-variant-numeric:tabular-nums}
-.rightTop{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btnLink{
-  display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;font-weight:800;
-  background:linear-gradient(90deg,#12d1ff,#6f5bff);color:#0a0f1f;text-decoration:none;border:1px solid rgba(255,255,255,.06)
-}
-.btnLink.wa{background:linear-gradient(90deg,#25D366,#9effa3);color:#0b1016;display:none}
-
-/* panel derecho */
+.rightTop{margin-left:auto;display:flex;gap:8px}
+.btnLink{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;font-weight:800;
+  text-decoration:none;border:1px solid rgba(255,255,255,.06);background:linear-gradient(90deg,#12d1ff,#7c59ff);color:#08101c}
+.btnLink.wa{display:none;background:linear-gradient(90deg,#25D366,#a6ffb4)}
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:10px}
 .center{text-align:center}
 .stat{display:flex;gap:10px;align-items:center;justify-content:center;margin:6px 0 8px}
-.badge{min-width:88px;height:44px;border-radius:10px;
-  background:radial-gradient(100% 100% at 50% 0%, rgba(0,209,255,.45), rgba(124,77,255,.45));
-  display:grid;place-items:center;font-weight:800;font-size:18px;box-shadow:inset 0 0 12px rgba(124,77,255,.45)}
+.badge{min-width:84px;height:42px;border-radius:10px;display:grid;place-items:center;font-weight:800;
+  background:radial-gradient(100% 100% at 50% 0%,rgba(0,209,255,.45),rgba(124,89,255,.45))}
 .smallline{font-size:12px;color:var(--muted)}
-h1,h2,h3,p{margin:0 0 6px}
-h1{font-size:20px}
-.muted{color:var(--muted)}
+h1,h2,h3,p{margin:0 0 6px} h1{font-size:20px} .muted{color:var(--muted)}
 
-/* scratch card */
-.stage{display:flex;justify-content:center}
-.scratchWrap{
-  margin:8px auto 0; width:100%; max-width:540px;
-  background:linear-gradient(180deg,#18152a,#0f0c1f); border:1px solid #2b2745; border-radius:14px; padding:12px;
-}
-.cardArea{position:relative;border:1px solid #3a355a;border-radius:12px;overflow:hidden;background:#0f0c1f}
-.reveal{
-  position:absolute;inset:0;display:grid;place-items:center;padding:20px;text-align:center;
-  color:#fff; font-weight:900; letter-spacing:.4px; line-height:1.15;
-}
-.reveal h2{font-size:30px;margin:0 0 8px}
-.reveal p{font-size:14px;color:#cfd3ff;margin:0}
-#scratch{display:block;width:100%;height:auto}
+/* GRID de raspaditas */
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:6px}
+@media(max-width:520px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cardWrap{position:relative;border:1px solid #2f2a52;border-radius:12px;overflow:hidden;background:#0f0c1f}
+.cardHead{padding:8px 10px;font-weight:900;letter-spacing:.3px;background:linear-gradient(90deg,rgba(124,89,255,.18),transparent)}
+.reveal{position:absolute;inset:32px 12px 12px 12px;display:grid;place-items:center;text-align:center}
+.reveal h3{margin:0 0 6px;font-size:18px}
+.reveal p{margin:0;color:#cfd3ff;font-size:13px}
+canvas.scratch{display:block;width:100%;height:170px;background:transparent}
 
-/* Dock inferior */
-.dock{
-  position:fixed;left:0;right:0;bottom:0;z-index:30;
-  padding:6px 8px;display:flex;gap:8px;backdrop-filter:blur(6px);
-  background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.88) 30%, rgba(11,15,30,.96) 100%);
-}
-.btn{
-  appearance:none;border:none;cursor:pointer;padding:11px 12px;border-radius:12px;font-weight:800;
-  background:linear-gradient(90deg,#ff9a3d,#ff5c39);color:#0b0f1e;width:100%;
-  box-shadow:0 8px 20px rgba(0,0,0,.35)
-}
+/* Dock */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:6px 8px;display:flex;gap:8px;
+  background:linear-gradient(180deg,rgba(11,15,30,0) 0%,rgba(11,15,30,.9) 30%,rgba(11,15,30,.98) 100%)}
+.btn{appearance:none;border:none;cursor:pointer;padding:11px 12px;border-radius:12px;font-weight:800;width:100%;
+  background:linear-gradient(90deg,#ff9a3d,#ff5c39);color:#0b0f1e;box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .btn.ok{background:#25D366;color:#0b0f1e}
 .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-@media(max-width:480px){ .container{margin-bottom:76px} }
 
-/* Modal */
+/* Modal & confetti */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(5,7,16,.6);backdrop-filter:blur(4px);z-index:60}
 .modal.show{display:flex}
 .modalCard{width:min(520px,92vw);background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
-.modalHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.modalHead h3{margin:0;font-size:18px}
+.modalHead{display:flex;gap:8px;align-items:center;margin-bottom:8px}
 .modalBody{display:grid;gap:8px}
 .row{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed var(--border);border-radius:12px;padding:10px}
-.k{color:var(--muted);font-size:13px}
-.v{font-weight:800}
+.k{color:var(--muted);font-size:13px}.v{font-weight:800}
 .actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-.closeX{margin-left:auto;cursor:pointer;opacity:.8}
-.closeX:hover{opacity:1}
-
-/* Confetti */
+.closeX{margin-left:auto;cursor:pointer;opacity:.8}.closeX:hover{opacity:1}
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
 @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
@@ -113,10 +74,9 @@ h1{font-size:20px}
 <div class="container">
   <div class="card">
     <div class="head">
-      <div class="brand"><span class="logo">B3</span> BET300</div>
-      <span class="pill">Raspadita</span>
+      <div class="brand"><span class="logo">B3</span>BET300</div>
+      <span class="pill">Cartilla de Raspaditas</span>
       <span class="pill time">⚡ Tiempo limitado <span class="count" id="countdown">--:--</span></span>
-      <span class="pill sound" id="soundToggle">🔊 Sonido: <b id="soundState">ON</b></span>
       <div class="rightTop">
         <a id="playNow" class="btnLink" target="_blank" rel="noopener">🎮 Entrar a la plataforma</a>
         <a id="waTop" class="btnLink wa" target="_blank" rel="noopener">🟢 WhatsApp</a>
@@ -124,25 +84,12 @@ h1{font-size:20px}
     </div>
 
     <div class="grid">
-      <!-- IZQ: RASPADITA -->
+      <!-- IZQ -->
       <div class="panel">
-        <h1>Raspá y descubrí tu beneficio para la próxima carga</h1>
-        <div class="stage">
-          <div class="scratchWrap">
-            <div class="cardArea">
-              <div class="reveal" id="reveal">
-                <div>
-                  <h2 id="revealTitle">—</h2>
-                  <p id="revealDesc">Raspá para revelar</p>
-                </div>
-              </div>
-              <canvas id="scratch"></canvas>
-            </div>
-          </div>
-        </div>
+        <h1>Elegí una raspadita y descubrí tu beneficio</h1>
+        <div id="board" class="board"></div>
       </div>
-
-      <!-- DER: ESTADO -->
+      <!-- DER -->
       <div class="panel">
         <div class="center">
           <div class="stat">
@@ -167,7 +114,7 @@ h1{font-size:20px}
 
 <!-- DOCK -->
 <div class="dock">
-  <button id="resetBtn" class="btn ghost">🔁 Reintentar (si corresponde)</button>
+  <button id="resetBtn" class="btn ghost">🔁 Reintentar (si sale “Otra chance”)</button>
   <a id="dockPlatform" class="btn ok" target="_blank" rel="noopener">🌐 Plataforma</a>
 </div>
 
@@ -194,329 +141,193 @@ h1{font-size:20px}
 <div id="confetti" class="confetti" aria-hidden="true"></div>
 
 <script>
-/* ====== PARAMS por PC (4) ====== */
+/* ====== 4 PCs ====== */
 const PLATFORM_LINKS = {
-  pc1: "https://plataforma-pc1.example/replace",
-  pc2: "https://plataforma-pc2.example/replace",
-  pc3: "https://plataforma-pc3.example/replace",
-  pc4: "https://plataforma-pc4.example/replace"
+  pc1:"https://plataforma-pc1.example/replace",
+  pc2:"https://plataforma-pc2.example/replace",
+  pc3:"https://plataforma-pc3.example/replace",
+  pc4:"https://plataforma-pc4.example/replace"
 };
 const WP_NUMBERS = {
-  pc1: "5491111111111",
-  pc2: "5491222222222",
-  pc3: "5491333333333",
-  pc4: "5491444444444"
+  pc1:"5491111111111", pc2:"5491222222222", pc3:"5491333333333", pc4:"5491444444444"
 };
 const qs = new URLSearchParams(location.search);
 const pcParam = (qs.get('pc')||'1').trim();
-const pcKey = "pc" + (pcParam.match(/^[1-4]$/) ? pcParam : "1");
+const pcKey = "pc" + (pcParam.match(/^[1-4]$/)?pcParam:"1");
 const PLATFORM = PLATFORM_LINKS[pcKey];
 const WPNUM = WP_NUMBERS[pcKey];
-
 document.getElementById('playNow').href = PLATFORM;
 document.getElementById('dockPlatform').href = PLATFORM;
 document.getElementById('openPlatform').href = PLATFORM;
 
-/* ====== Beneficios ====== */
-const BENEFITS = [
+/* ====== Beneficios (uno por tarjeta) ====== */
+const CARDS = [
   { id:'bonus30', label:'30% EXTRA', desc:'Pedilo por WhatsApp y aplicá el extra en tu próxima carga.' },
   { id:'roulette',label:'RULETA',     desc:'Accedé a la ruleta de beneficios.' },
-  { id:'retry',   label:'OTRA CHANCE',desc:'Podés jugar de nuevo ahora mismo.' },
-  { id:'memo',    label:'MEMO PLAY',  desc:'Probá suerte con el Memory.' },
-  { id:'chest',   label:'COFRE MISTERIOSO', desc:'Otra mecánica con premio seguro.' },
-  { id:'slot',    label:'SLOT',       desc:'Girá y obtené extra para tu carga.' }
+  { id:'retry',   label:'OTRA CHANCE',desc:'Podés raspar otra tarjeta.' },
+  { id:'memo',    label:'MEMO PLAY',  desc:'Probá suerte en el Memory.' },
+  { id:'chest',   label:'COFRE MISTERIOSO', desc:'Premio asegurado en su landing.' },
+  { id:'slot',    label:'SLOT',       desc:'Girá por extra en la próxima carga.' }
 ];
-// Probabilidades (suma 1)
-const PROBS = [0.18,0.18,0.18,0.16,0.15,0.15];
 
-/* ====== Sonido simple ====== */
-let soundOn = true;
-const soundToggle = document.getElementById('soundToggle');
-const soundState  = document.getElementById('soundState');
-const AudioKit = (()=> {
-  const Ctx = window.AudioContext || window.webkitAudioContext;
-  const ctx = new Ctx(); let unlocked=false;
-  function unlock(){ if(!unlocked){ ctx.resume().catch(()=>{}); unlocked=true; } }
-  function click(freq=900,dur=0.035,vol=0.06){
-    const o=ctx.createOscillator(), g=ctx.createGain(); o.type='square'; o.frequency.value=freq; g.gain.value=0; o.connect(g).connect(ctx.destination);
-    const t=ctx.currentTime; g.gain.linearRampToValueAtTime(vol, t+0.005); g.gain.exponentialRampToValueAtTime(0.0001, t+dur); o.start(t); o.stop(t+dur);
-  }
-  function win(){ [660,880,1320].forEach((f,i)=>setTimeout(()=>click(f,0.12,0.09), i*120)); }
-  return {ctx,unlock,win};
-})();
-document.addEventListener('click',()=>AudioKit.unlock(),{once:true});
-soundToggle.addEventListener('click',()=>{ soundOn=!soundOn; soundState.textContent=soundOn?'ON':'OFF';});
-
-/* ====== Antifraude / códigos ====== */
-const SALT = "bet300-scratch-v1";
-function ensureDeviceId(){
-  let id = localStorage.getItem('device_id');
-  if(!id){ id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('device_id', id); }
-  return id;
-}
-const DEVICE_ID = ensureDeviceId();
-function todayKey(){const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;}
-function tsString(d=new Date()){
-  const dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yyyy=d.getFullYear();
-  const hh=String(d.getHours()).padStart(2,'0'),mi=String(d.getMinutes()).padStart(2,'0');
-  return `${dd}/${mm}/${yyyy} ${hh}:${mi}`;
-}
-async function sha256hex(msg){
-  const enc = new TextEncoder().encode(msg);
-  const buf = await crypto.subtle.digest("SHA-256", enc);
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
-}
-async function makeClaimCode(prizeLabel){
-  const base = `${DEVICE_ID}|${todayKey()}|${prizeLabel}|pc:${pcParam}|${SALT}`;
-  const hex = await sha256hex(base);
-  return hex.slice(0,10).toUpperCase();
-}
-
-/* ====== Log local ====== */
-function readLog(){ try{ return JSON.parse(localStorage.getItem('scratch_log') || '[]'); }catch(e){ return []; } }
-function writeLog(arr){ localStorage.setItem('scratch_log', JSON.stringify(arr)); }
-function addLog(entry){ const L=readLog(); L.push(entry); if(L.length>200) L.splice(0, L.length-200); writeLog(L); }
-
-/* ====== Reloj / bloqueo diario ====== */
-function endOfDay(){const n=new Date();const end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,0,0).getTime();
-  return end>Date.now()?end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,23,59,0,0).getTime()}
-function tickCountdown(){
-  const ms=endOfDay()-Date.now(); const total=Math.max(0,Math.floor(ms/1000));
-  const h=Math.floor(total/3600), m=Math.floor((total%3600)/60), s=total%60;
-  document.getElementById('countdown').textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-}
-setInterval(tickCountdown,1000); tickCountdown();
-
-/* ====== UI refs ====== */
-const resetBtn = document.getElementById('resetBtn');
+/* ====== Estado / UI ====== */
 const badge = document.getElementById('badge');
 const title = document.getElementById('title');
 const subtitle = document.getElementById('subtitle');
 const stampEl = document.getElementById('stampLine');
 const resultLine = document.getElementById('resultLine');
+const waTop = document.getElementById('waTop');
+
 const prizeModal = document.getElementById('prizeModal');
 const mPrize = document.getElementById('mPrize');
 const mCode  = document.getElementById('mCode');
 const mTs    = document.getElementById('mTs');
 const goGame = document.getElementById('goGame');
 const askWA  = document.getElementById('askWA');
-const waTop  = document.getElementById('waTop');
-const closeModalX = document.getElementById('closeModal');
+document.getElementById('closeModal').onclick = ()=>prizeModal.classList.remove('show');
+prizeModal.addEventListener('click',e=>{ if(e.target===prizeModal) prizeModal.classList.remove('show'); });
+
+/* ====== Antifraude / códigos / log ====== */
+const SALT="bet300-multi-scratch-v1";
+function ensureDeviceId(){ let id=localStorage.getItem('device_id'); if(!id){ id=(crypto.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('device_id',id);} return id;}
+const DEVICE_ID = ensureDeviceId();
+function todayKey(){const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;}
+function tsString(d=new Date()){const dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yyyy=d.getFullYear();const hh=String(d.getHours()).padStart(2,'0'),mi=String(d.getMinutes()).padStart(2,'0');return `${dd}/${mm}/${yyyy} ${hh}:${mi}`;}
+async function sha256hex(msg){const enc=new TextEncoder().encode(msg);const buf=await crypto.subtle.digest("SHA-256",enc);return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");}
+async function makeClaimCode(prizeLabel){const base=`${DEVICE_ID}|${todayKey()}|${prizeLabel}|pc:${pcParam}|${SALT}`;const hex=await sha256hex(base);return hex.slice(0,10).toUpperCase();}
+function logAdd(entry){ const L=JSON.parse(localStorage.getItem('ms_log')||'[]'); L.push(entry); if(L.length>200) L.shift(); localStorage.setItem('ms_log',JSON.stringify(L)); }
+
+/* ====== Bloqueo diario ====== */
+function endOfDay(){const n=new Date();const end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,0,0).getTime();return end>Date.now()?end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,23,59,0,0).getTime()}
+function tickCountdown(){const ms=endOfDay()-Date.now();const t=Math.max(0,Math.floor(ms/1000));const h=Math.floor(t/3600),m=Math.floor((t%3600)/60),s=t%60;document.getElementById('countdown').textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
+setInterval(tickCountdown,1000); tickCountdown();
+
+/* ====== WhatsApp 30% ====== */
+function bonusWA(){ return `https://wa.me/${WPNUM}?text=${encodeURIComponent('Hola, gané 30% EXTRA y quiero aplicarlo en mi próxima carga.')}`; }
+
+/* ====== Construir tablero ====== */
+const board = document.getElementById('board');
+let allowPicks = 1; // aumenta a 2 si sale "retry"
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const order = shuffle(CARDS.slice());
+
+function coverCanvas(ctx,w,h){
+  const g=ctx.createLinearGradient(0,0,w,h); g.addColorStop(0,"#cdd2db"); g.addColorStop(1,"#a0a7b7");
+  ctx.globalCompositeOperation='source-over';
+  ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle="rgba(255,255,255,.28)"; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle="#1a2234"; ctx.font=`${Math.floor(h/6)}px 800 system-ui,Segoe UI,Roboto`; ctx.textAlign="center";
+  ctx.fillText("RASPA", w/2, h/2+10);
+}
+
+function mountCard(card){
+  const wrap=document.createElement('div'); wrap.className='cardWrap'; wrap.dataset.id=card.id;
+  wrap.innerHTML = `
+    <div class="cardHead">${card.label}</div>
+    <div class="reveal"><div><h3>—</h3><p>${card.desc}</p></div></div>
+    <canvas class="scratch" width="480" height="300"></canvas>
+  `;
+  board.appendChild(wrap);
+
+  const canvas = wrap.querySelector('canvas'); const ctx=canvas.getContext('2d');
+  function size(){ const w=wrap.clientWidth-2, h=170; const dpr=window.devicePixelRatio||1; canvas.width=w*dpr; canvas.height=h*dpr; canvas.style.width=w+'px'; canvas.style.height=h+'px'; coverCanvas(ctx,canvas.width,canvas.height); }
+  size(); window.addEventListener('resize',()=>{ size(); });
+
+  let drawing=false,last=null,cleared=false;
+  function scratch(x,y){ const r=Math.max(18,canvas.width*0.03); ctx.globalCompositeOperation='destination-out'; ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill(); }
+  function handle(e){ const r=canvas.getBoundingClientRect(), dpr=window.devicePixelRatio||1; const x=((e.touches?e.touches[0].clientX:e.clientX)-r.left)*dpr; const y=((e.touches?e.touches[0].clientY:e.clientY)-r.top)*dpr; if(!drawing){drawing=true;last={x,y}; scratch(x,y); return;} const dx=x-last.x,dy=y-last.y,dist=Math.hypot(dx,dy),steps=Math.max(1,Math.floor(dist/10)); for(let i=0;i<steps;i++){const t=i/steps;scratch(last.x+dx*t,last.y+dy*t);} last={x,y}; }
+  function end(){ drawing=false; last=null; if(!cleared && revealed()){ cleared=true; onReveal(card, wrap); } }
+  function revealed(){ const step=16, img=ctx.getImageData(0,0,canvas.width,canvas.height).data; let total=0,clear=0; for(let y=0;y<canvas.height;y+=step){ for(let x=0;x<canvas.width;x+=step){ const a=img[((y*canvas.width+x)<<2)+3]; total++; if(a===0) clear++; } } return (clear/total)>0.45; }
+
+  canvas.onmousedown=e=>{ if(canPlay(wrap)) handle(e); };
+  canvas.onmousemove=e=>{ if(drawing) handle(e); };
+  canvas.onmouseup=end; canvas.onmouseleave=end;
+  canvas.ontouchstart=e=>{ if(canPlay(wrap)){e.preventDefault(); handle(e);} };
+  canvas.ontouchmove =e=>{ if(drawing){e.preventDefault(); handle(e);} };
+  canvas.ontouchend  =e=>{ e.preventDefault(); end(); };
+
+  // título visible debajo del raspado
+  wrap.querySelector('.reveal h3').textContent = card.label;
+}
+
+function canPlay(wrap){
+  const done = localStorage.getItem('ms_done')==='1';
+  const picked = board.querySelectorAll('.cardWrap.picked').length;
+  return (!done && picked < allowPicks && !wrap.classList.contains('picked'));
+}
+
+/* ====== Resultado al revelar una tarjeta ====== */
+function confetti(){ const el=document.getElementById('confetti'); el.innerHTML=''; const n=28; for(let i=0;i<n;i++){const p=document.createElement('i'); p.style.left=(Math.random()*100)+'vw'; p.style.animationDelay=(Math.random()*0.5)+'s'; p.style.background=Math.random()<.5?'linear-gradient(#80ffea,#4e9cff)':'linear-gradient(#ffd166,#ff3d7f)'; el.appendChild(p);} setTimeout(()=>el.innerHTML='',1800); }
 function openModal(){ prizeModal.classList.add('show'); }
-function closeModal(){ prizeModal.classList.remove('show'); }
-closeModalX.onclick = closeModal;
-prizeModal.addEventListener('click',e=>{ if(e.target===prizeModal) closeModal(); });
 
-/* ====== WhatsApp link sólo para 30% ====== */
-function whatsappLinkForBonus30(){
-  const txt = encodeURIComponent("Hola, gané 30% EXTRA en la Raspadita y quiero aplicarlo en mi próxima carga.");
-  return `https://wa.me/${WPNUM}?text=${txt}`;
-}
+async function onReveal(card, wrap){
+  wrap.classList.add('picked');
 
-/* ====== Lógica raspadita ====== */
-const canvas = document.getElementById('scratch');
-const reveal = document.getElementById('reveal');
-const rTitle = document.getElementById('revealTitle');
-const rDesc  = document.getElementById('revealDesc');
-let ctx, isDrawing=false, last = null, cleared=false;
-let PRIZE = null; // {id,label,desc}
+  // si es la 1ª revelación y NO es retry, se bloquea; si es retry, allowPicks=2
+  if(card.id==='retry'){ allowPicks = 2; title.textContent = "🎯 ¡Otra chance habilitada!"; }
+  const picked = board.querySelectorAll('.cardWrap.picked').length;
+  if(picked >= allowPicks){ localStorage.setItem('ms_done','1'); }
 
-function pickIndexByProb(){
-  const r = Math.random(); let acc=0;
-  for(let i=0;i<BENEFITS.length;i++){ acc+=PROBS[i]; if(r<=acc) return i; }
-  return BENEFITS.length-1;
-}
-
-function choosePrize(){
-  const idx = pickIndexByProb();
-  return BENEFITS[idx];
-}
-
-function setReveal(prize){
-  rTitle.textContent = prize.label;
-  rDesc.textContent  = prize.desc;
-}
-
-function sizeCanvas(){
-  const ar = 16/9;
-  const wrapW = Math.min(520, document.querySelector('.scratchWrap').clientWidth - 2);
-  const w = wrapW - 2; let h = w/ar; if(h < 220) h = 220;
-  canvas.width = Math.floor(w * (window.devicePixelRatio||1));
-  canvas.height= Math.floor(h * (window.devicePixelRatio||1));
-  canvas.style.width = w+'px'; canvas.style.height = h+'px';
-  ctx = canvas.getContext('2d');
-  drawCover();
-}
-
-function drawCover(){
-  const w=canvas.width, h=canvas.height;
-  // cubierta gris “raspable”
-  const g = ctx.createLinearGradient(0,0,w,h);
-  g.addColorStop(0,"#bfc3cc"); g.addColorStop(1,"#8b92a3");
-  ctx.globalCompositeOperation = 'source-over';
-  ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
-  ctx.fillStyle = "rgba(255,255,255,.25)"; ctx.fillRect(0,0,w,h);
-  // texto “RASPÁ AQUÍ”
-  ctx.fillStyle = "#192030"; ctx.font = `${Math.floor(h/9)}px 800 system-ui,Segoe UI,Roboto`; ctx.textAlign="center";
-  ctx.fillText("RASPÁ AQUÍ", w/2, h/2);
-  ctx.strokeStyle = "rgba(0,0,0,.18)"; ctx.lineWidth = Math.max(6, w*0.01);
-  ctx.strokeRect(Math.max(2,w*0.015), Math.max(2,h*0.015), w - Math.max(4,w*0.03), h - Math.max(4,h*0.03));
-}
-
-function scratchAt(x,y){
-  const radius = Math.max(24, canvas.width*0.035);
-  ctx.globalCompositeOperation = 'destination-out';
-  ctx.beginPath(); ctx.arc(x,y,radius,0,Math.PI*2); ctx.fill();
-}
-
-function handlePointer(e){
-  const rect = canvas.getBoundingClientRect();
-  const dpr = window.devicePixelRatio||1;
-  const x = ( (e.touches?e.touches[0].clientX:e.clientX) - rect.left ) * dpr;
-  const y = ( (e.touches?e.touches[0].clientY:e.clientY) - rect.top  ) * dpr;
-  if(!isDrawing){ isDrawing=true; last={x,y}; scratchAt(x,y); return; }
-  // línea entre last y actual
-  const dx=x-last.x, dy=y-last.y, dist=Math.hypot(dx,dy), steps=Math.max(1,Math.floor(dist/10));
-  for(let i=0;i<steps;i++){ const t=i/steps; scratchAt(last.x+dx*t, last.y+dy*t); }
-  last={x,y};
-}
-
-function endPointer(){
-  isDrawing=false; last=null;
-  if(!cleared && revealedEnough()){ cleared=true; onRevealed(); }
-}
-
-function revealedEnough(){
-  // muestreo rápido en grid para no hacer getImageData completo
-  const w=canvas.width,h=canvas.height;
-  const step=16, img=ctx.getImageData(0,0,w,h).data;
-  let total=0, clear=0;
-  for(let y=0;y<h;y+=step){
-    for(let x=0;x<w;x+=step){
-      const a = img[((y*w+x)<<2)+3];
-      total++; if(a===0) clear++;
-    }
-  }
-  return (clear/total) > 0.45;
-}
-
-function onRevealed(){
-  // guardar premio, código y ts
   const ts = tsString(new Date());
-  makeClaimCode(PRIZE.label).then(code=>{
-    localStorage.setItem('scratch_done','1');
-    localStorage.setItem('scratch_prize', JSON.stringify(PRIZE));
-    localStorage.setItem('scratch_code', code);
-    localStorage.setItem('scratch_ts', ts);
-    addLog({ ts, prize: PRIZE.label, code, pc: pcParam, device: DEVICE_ID });
+  const code = await makeClaimCode(card.label);
+  localStorage.setItem('ms_last_prize', JSON.stringify(card));
+  localStorage.setItem('ms_code', code);
+  localStorage.setItem('ms_ts', ts);
+  logAdd({ts, prize:card.label, code, pc:pcParam, device:DEVICE_ID});
 
-    // UI derecha
-    badge.textContent = PRIZE.label.includes('%') ? PRIZE.label : PRIZE.label.split(' ')[0];
-    title.textContent = PRIZE.id==='retry' ? "🎯 ¡Otra chance habilitada!" : `🎉 ${PRIZE.label}`;
-    subtitle.innerHTML = PRIZE.id==='bonus30'
-      ? "Pedí el <b>30% EXTRA</b> por WhatsApp."
-      : "Aplicá el beneficio en la landing del juego.";
-    resultLine.textContent = `Resultado: ${PRIZE.label}`;
-    stampEl.textContent   = `Código: ${code} · ${ts}`;
+  // UI derecha
+  badge.textContent = card.label.includes('%') ? card.label : card.label.split(' ')[0];
+  stampEl.textContent = `Código: ${code} · ${ts}`;
+  resultLine.textContent = `Resultado: ${card.label}`;
+  if(card.id!=='retry') title.textContent = `🎉 ${card.label}`;
+  subtitle.innerHTML = (card.id==='bonus30') ? "Pedí el <b>30% EXTRA</b> por WhatsApp." : "Aplicá el beneficio en su landing.";
 
-    // Modal
-    document.getElementById('mPrize').textContent = PRIZE.label;
-    document.getElementById('mCode').textContent  = code;
-    document.getElementById('mTs').textContent    = ts;
+  // Modal
+  mPrize.textContent = card.label; mCode.textContent = code; mTs.textContent = ts;
 
-    // Top WhatsApp sólo en 30%
-    if(PRIZE.id==='bonus30'){
-      const url = whatsappLinkForBonus30();
-      document.getElementById('waTop').style.display='inline-flex';
-      document.getElementById('waTop').href = url;
-      document.getElementById('askWA').style.display='inline-flex';
-      document.getElementById('askWA').href = url;
-    }else{
-      document.getElementById('waTop').style.display='none';
-      document.getElementById('askWA').style.display='none';
-    }
-
-    // Botón “Ir al juego”
-    const go = document.getElementById('goGame');
-    go.target="_blank"; go.rel="noopener";
-    if(PRIZE.id==='bonus30'){
-      go.textContent="🌐 Abrir plataforma"; go.href=PLATFORM;
-    }else if(PRIZE.id==='roulette'){ go.textContent="➡️ Abrir Ruleta"; go.href="#ruleta"; }
-    else if(PRIZE.id==='slot'){      go.textContent="➡️ Abrir Slot";   go.href="#slot"; }
-    else if(PRIZE.id==='memo'){      go.textContent="➡️ Abrir Memo";   go.href="#memo"; }
-    else if(PRIZE.id==='chest'){     go.textContent="➡️ Abrir Cofre";  go.href="#cofre"; }
-    else if(PRIZE.id==='retry'){
-      go.textContent="🔁 Habilitado para reintentar"; go.href="#";
-      localStorage.removeItem('scratch_done'); // permite raspar otra vez
-    }
-
-    if(soundOn) AudioKit.win();
-    confettiBurst();
-    openModal();
-  });
-}
-
-/* confetti */
-function confettiBurst(){
-  const el=document.getElementById('confetti'); el.innerHTML='';
-  const n=28;
-  for(let i=0;i<n;i++){
-    const p=document.createElement('i');
-    p.style.left=(Math.random()*100)+'vw';
-    p.style.animationDelay=(Math.random()*0.5)+'s';
-    p.style.background = Math.random()<.5?'linear-gradient(#80ffea,#4e9cff)':'linear-gradient(#ffd166,#ff3d7f)';
-    el.appendChild(p);
+  // WhatsApp 30% (top + modal)
+  if(card.id==='bonus30'){
+    const url = bonusWA();
+    waTop.style.display='inline-flex'; waTop.href = url;
+    askWA.style.display='inline-flex'; askWA.href = url;
+  }else{
+    waTop.style.display='none'; askWA.style.display='none';
   }
-  setTimeout(()=>{el.innerHTML='';},1800);
+
+  // Botón “Ir al juego” (o plataforma p/30%)
+  if(card.id==='bonus30'){ goGame.textContent="🌐 Abrir plataforma"; goGame.href=PLATFORM; }
+  else if(card.id==='roulette'){ goGame.textContent="➡️ Abrir Ruleta"; goGame.href="#ruleta"; }
+  else if(card.id==='slot'){     goGame.textContent="➡️ Abrir Slot";   goGame.href="#slot"; }
+  else if(card.id==='memo'){     goGame.textContent="➡️ Abrir Memo";   goGame.href="#memo"; }
+  else if(card.id==='chest'){    goGame.textContent="➡️ Abrir Cofre";  goGame.href="#cofre"; }
+  else if(card.id==='retry'){    goGame.textContent="🔁 Tenés otra raspadita"; goGame.href="#"; }
+
+  confetti(); openModal();
 }
 
-/* Reset (si sale “Otra chance”) */
-document.getElementById('resetBtn').addEventListener('click', ()=>{
-  if(localStorage.getItem('scratch_done')==='1'){ alert('No tenés otra chance por ahora.'); return; }
-  initScratch(true);
-  badge.textContent='-'; title.textContent='Tenés 1 intento disponible'; subtitle.innerHTML='Los beneficios se aplican a tu <b>próxima carga</b>.';
-  stampEl.textContent=''; resultLine.textContent='—';
-});
-
-/* ====== Init ====== */
-function initScratch(forceNew=false){
-  // premio del día (o nuevo si forceNew)
-  if(!forceNew){
-    const saved = localStorage.getItem('scratch_prize');
-    const done  = localStorage.getItem('scratch_done')==='1';
-    if(saved && done){
-      const p = JSON.parse(saved);
-      PRIZE = p; setReveal(PRIZE);
-      // canvas cubierto pero ya no se puede jugar
-    }
-  }
-  if(!PRIZE || forceNew) { PRIZE = choosePrize(); setReveal(PRIZE); }
-
-  sizeCanvas(); cleared=false;
-  // listeners táctiles/ratón
-  canvas.onmousedown = e=>handlePointer(e);
-  canvas.onmousemove = e=>{ if(isDrawing) handlePointer(e); };
-  canvas.onmouseup   = endPointer; canvas.onmouseleave=endPointer;
-  canvas.ontouchstart= e=>{ e.preventDefault(); handlePointer(e); };
-  canvas.ontouchmove = e=>{ e.preventDefault(); if(isDrawing) handlePointer(e); };
-  canvas.ontouchend  = e=>{ e.preventDefault(); endPointer(); };
+/* ====== Inicialización ====== */
+function buildBoard(){
+  board.innerHTML='';
+  allowPicks = 1;
+  shuffle(order).forEach(mountCard);
 }
-window.addEventListener('resize', ()=>{ sizeCanvas(); });
 
-/* Persistencia diario (reset a medianoche) */
 (function daily(){
-  const key = 'scratch_date'; const today = todayKey();
-  const stored=localStorage.getItem(key);
-  if(stored && stored!==today){
-    localStorage.removeItem('scratch_done');
-    localStorage.removeItem('scratch_prize');
-    localStorage.removeItem('scratch_code');
-    localStorage.removeItem('scratch_ts');
-    localStorage.setItem(key,today);
-  }else if(!stored){ localStorage.setItem(key,today); }
+  const key='ms_date', today=todayKey(); const stored=localStorage.getItem(key);
+  if(stored && stored!==today){ localStorage.removeItem('ms_done'); localStorage.removeItem('ms_last_prize'); localStorage.removeItem('ms_code'); localStorage.removeItem('ms_ts'); localStorage.setItem(key,today); }
+  else if(!stored){ localStorage.setItem(key,today); }
 })();
 
-initScratch();
+buildBoard();
+
+/* Reset sólo si quedó habilitado por “retry” y aún no se usó la segunda */
+document.getElementById('resetBtn').addEventListener('click', ()=>{
+  const picked = board.querySelectorAll('.cardWrap.picked').length;
+  if(allowPicks>1 && picked<allowPicks){ alert('Tenés una tarjeta extra todavía sin raspar. Elegí otra.'); return; }
+  alert('El reset solo se habilita cuando empieza un nuevo día.');
+});
+
+/* ====== Reloj corriendo ====== */
 </script>
 </body>
 </html>
