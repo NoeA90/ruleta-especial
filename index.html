@@ -7,17 +7,21 @@
 <meta name="theme-color" content="#0a0f1f"/>
 <style>
 :root{
-  --bg1:#ff8a2e; --bg2:#ffb86a; --panel:#161329; --panel2:#110f20; --border:#28224a;
-  --text:#eef2ff; --muted:#aab0d6; --ok:#25D366; --accent:#7c59ff; --cyan:#22d3ee;
+  /* Fondo cálido + paneles fríos para máximo contraste */
+  --bg1:#ff8a2e; --bg2:#ffc27a;
+  --panel:#0f1125; --panel2:#0b0e1d; --border:#272b52;
+  --text:#eef2ff; --muted:#aab0d6; --ok:#25D366;
+  --accent:#7c59ff; --cyan:#22d3ee;
 }
 *{box-sizing:border-box} html,body{height:100%}
 body{
   margin:0;color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto;
-  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 18%,#0d0a16 75%,#0b0a14 100%);
+  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 16%,#0e0c18 72%,#0b0a14 100%);
 }
 .container{max-width:980px;margin:8px auto 82px;padding:0 10px}
-.card{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:10px;box-shadow:0 15px 40px rgba(0,0,0,.35)}
+.card{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:10px;box-shadow:0 15px 40px rgba(0,0,0,.38)}
 @media(min-width:900px){.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px}}
+
 .head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
 .brand{font-weight:900;letter-spacing:.3px;font-size:20px;display:flex;gap:8px;align-items:center}
 .brand .logo{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;
@@ -28,37 +32,67 @@ body{
 .rightTop{margin-left:auto;display:flex;gap:8px}
 .btnLink{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;font-weight:800;
   text-decoration:none;border:1px solid rgba(255,255,255,.06);background:linear-gradient(90deg,#12d1ff,#7c59ff);color:#08101c;white-space:nowrap}
-.btnLink.wa{display:none;background:linear-gradient(90deg,#25D366,#a6ffb4)}
+.btnLink.wa{display:none;background:linear-gradient(90deg,#25D366,#a9ffc1)}
+
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:10px}
 .center{text-align:center}
 .stat{display:flex;gap:10px;align-items:center;justify-content:center;margin:6px 0 8px}
-.badge{min-width:78px;height:40px;border-radius:10px;display:grid;place-items:center;font-weight:800;
-  background:radial-gradient(100% 100% at 50% 0%,rgba(0,209,255,.45),rgba(124,89,255,.45))}
+.badge{min-width:92px;height:42px;border-radius:10px;display:grid;place-items:center;font-weight:900;letter-spacing:.2px;
+  background:radial-gradient(100% 100% at 50% 0%,rgba(0,209,255,.55),rgba(124,89,255,.55))}
 .smallline{font-size:12px;color:var(--muted)}
 h1,h2,h3,p{margin:0 0 6px} h1{font-size:18px} .muted{color:var(--muted)}
 
-/* BOARD: cartas más compactas para móvil */
-.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:6px}
+/* BOARD — cartas compactas, alto fijo en mobile para menos scroll */
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:8px}
 @media(max-width:640px){.board{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.card3d{position:relative;perspective:900px;height:150px} /* alto más chico */
-.inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.7,.2,1);border-radius:12px}
+.card3d{position:relative;perspective:1100px;height:158px}
+.inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.2,.7,.2,1);border-radius:14px}
 .card3d.flipped .inner{transform:rotateY(180deg)}
-.face{position:absolute;inset:0;border:1px solid #2f2a52;border-radius:12px;backface-visibility:hidden;overflow:hidden;display:grid;place-items:center;padding:8px}
+.face{position:absolute;inset:0;border:1px solid #343b72;border-radius:14px;backface-visibility:hidden;overflow:hidden;display:grid;place-items:center;padding:10px}
+
+/* Dorso con “BET300” grande y fluorescente */
 .face.back{
-  background:radial-gradient(120% 90% at 50% 10%, rgba(124,89,255,.18), rgba(34,211,238,.18)), #0f0c1f;
+  background:
+    radial-gradient(120% 90% at 50% 10%, rgba(124,89,255,.22), rgba(34,211,238,.22)),
+    #0f0c1f;
 }
-.back .logoWrap{display:grid;place-items:center;text-align:center;gap:6px}
-.back .betLogo{
-  width:44px;height:44px;border-radius:10px;display:grid;place-items:center;
-  background:radial-gradient(70% 70% at 50% 30%,#7c59ff,#22d3ee);box-shadow:0 0 18px rgba(124,89,255,.5);color:#08101c;font-weight:900
+.back .logoWrap{position:relative;width:100%;height:100%;display:grid;place-items:center}
+.back .brandBig{
+  font-weight:1000; letter-spacing:1.5px; font-size:30px; color:#eaf1ff;
+  text-shadow:0 0 14px rgba(124,89,255,.7), 0 0 26px rgba(34,211,238,.6);
+  transform:translateY(-2px);
 }
-.back small{color:#cfd3ff;opacity:.9}
-.face.front{
-  background:linear-gradient(180deg,#1a1537,#0f0c1f); transform:rotateY(180deg);
+.back small{position:absolute;bottom:8px;color:#cfd3ff;opacity:.9}
+
+/* Frente con contrastes fuertes por premio */
+.face.front{transform:rotateY(180deg);color:#0b0f1e;text-align:center}
+.front .title{font-weight:1000;font-size:18px;letter-spacing:.2px}
+.front .desc{font-size:12px;color:#0b0f1e;opacity:.9;margin-top:6px}
+
+/* Paletas por carta (más vivas) */
+.card3d[data-id="bonus30"] .front{
+  background:linear-gradient(180deg,#ffe08a,#ffb100);
 }
-.front .title{font-weight:900;font-size:16px;letter-spacing:.2px;text-align:center}
-.front .desc{font-size:12px;color:#cfd3ff;text-align:center;margin-top:4px;opacity:.95}
-.dim{filter:grayscale(.35) brightness(.8);opacity:.9}
+.card3d[data-id="roulette"] .front{
+  background:linear-gradient(180deg,#b792ff,#6c53ff);
+  color:#eaf1ff;
+}
+.card3d[data-id="retry"] .front{
+  background:linear-gradient(180deg,#7ef5d1,#21cfa8);
+}
+.card3d[data-id="memo"] .front{
+  background:linear-gradient(180deg,#84f1ff,#21c1ff);
+}
+.card3d[data-id="chest"] .front{
+  background:linear-gradient(180deg,#ffd0e3,#ff6aa5);
+  color:#1a0c18;
+}
+.card3d[data-id="slot"] .front{
+  background:linear-gradient(180deg,#ffd392,#ff8a3d);
+}
+
+/* Cuando se revelan las otras, bajamos un toque el brillo */
+.dim{filter:grayscale(.25) brightness(.92);opacity:.95}
 
 /* Dock reducido */
 .dock{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:6px 8px;display:flex;gap:8px;
@@ -78,6 +112,7 @@ h1,h2,h3,p{margin:0 0 6px} h1{font-size:18px} .muted{color:var(--muted)}
 .k{color:var(--muted);font-size:13px}.v{font-weight:800}
 .actions{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
 .closeX{margin-left:auto;cursor:pointer;opacity:.8}.closeX:hover{opacity:1}
+
 .confetti{position:fixed;inset:0;pointer-events:none;z-index:50}
 .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
 @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
@@ -175,12 +210,12 @@ document.getElementById('openPlatform').href = PLATFORM;
 
 /* ===== Beneficios (cartas) ===== */
 const CARDS = [
-  { id:'bonus30', label:'30% EXTRA', desc:'Pedilo por WhatsApp y aplicá el extra en tu próxima carga.' },
-  { id:'roulette',label:'RULETA',     desc:'Accedé a la ruleta de beneficios.' },
-  { id:'retry',   label:'OTRA CHANCE',desc:'Podés elegir otra carta.' },
-  { id:'memo',    label:'MEMO PLAY',  desc:'Probá suerte en el Memory.' },
   { id:'chest',   label:'COFRE MISTERIOSO', desc:'Premio asegurado en su landing.' },
-  { id:'slot',    label:'SLOT',       desc:'Girá por extra en la próxima carga.' }
+  { id:'memo',    label:'MEMO PLAY',        desc:'Probá suerte en el Memory.' },
+  { id:'retry',   label:'OTRA CHANCE',      desc:'Podés elegir otra carta.' },
+  { id:'bonus30', label:'30% EXTRA',        desc:'Pedilo por WhatsApp y aplicá el extra.' },
+  { id:'roulette',label:'RULETA',           desc:'Accedé a la ruleta de beneficios.' },
+  { id:'slot',    label:'SLOT',             desc:'Girá por extra en la próxima carga.' }
 ];
 
 /* ===== UI refs ===== */
@@ -221,13 +256,13 @@ setInterval(tickCountdown,1000); tickCountdown();
 })();
 
 /* ===== Helpers ===== */
-function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function shuffle(a){for(let i=a.length-1;i>0;i++){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 function confetti(){ const el=document.getElementById('confetti'); el.innerHTML=''; const n=26; for(let i=0;i<n;i++){const p=document.createElement('i'); p.style.left=(Math.random()*100)+'vw'; p.style.animationDelay=(Math.random()*0.5)+'s'; p.style.background=Math.random()<.5?'linear-gradient(#80ffea,#4e9cff)':'linear-gradient(#ffd166,#ff3d7f)'; el.appendChild(p);} setTimeout(()=>el.innerHTML='',1700); }
 function openModal(){ prizeModal.classList.add('show'); }
 function bonusWA(){ return `https://wa.me/${WPNUM}?text=${encodeURIComponent('Hola, gané 30% EXTRA y quiero aplicarlo en mi próxima carga.')}`; }
 
 /* ===== Lógica de juego ===== */
-let allowPicks=1; // se pone 2 si sale 'retry'
+let allowPicks=1; // pasa a 2 si sale 'retry'
 function canPick(el){ const done=localStorage.getItem('cards_done')==='1'; const picked=board.querySelectorAll('.card3d.picked').length; return (!done && picked<allowPicks && !el.classList.contains('picked')); }
 
 function makeCard(model){
@@ -236,7 +271,7 @@ function makeCard(model){
     <div class="inner">
       <div class="face back">
         <div class="logoWrap">
-          <div class="betLogo">B3</div>
+          <div class="brandBig">BET300</div>
           <small>Tocar para revelar</small>
         </div>
       </div>
@@ -253,11 +288,10 @@ function makeCard(model){
 }
 
 async function flipAndReveal(el, model){
-  el.classList.add('flipped'); // animación
+  el.classList.add('flipped');
   setTimeout(async ()=>{
     el.classList.add('picked');
 
-    // si es retry, permitimos una más
     if(model.id==='retry'){ allowPicks=2; title.textContent="🎯 ¡Otra chance habilitada!"; }
 
     const picked = board.querySelectorAll('.card3d.picked').length;
@@ -270,21 +304,17 @@ async function flipAndReveal(el, model){
     localStorage.setItem('cards_ts', ts);
     logAdd({ts, prize:model.label, code, pc, device:DEVICE_ID});
 
-    // UI derecha
     badge.textContent = model.label.includes('%') ? model.label : model.label.split(' ')[0];
     stampEl.textContent = `Código: ${code} · ${ts}`;
     resultLine.textContent = `Resultado: ${model.label}`;
     if(model.id!=='retry') title.textContent = `🎉 ${model.label}`;
     subtitle.innerHTML = (model.id==='bonus30') ? "Pedí el <b>30% EXTRA</b> por WhatsApp." : "Aplicá el beneficio en su landing.";
 
-    // Modal
     mPrize.textContent = model.label; mCode.textContent = code; mTs.textContent = ts;
 
-    // WhatsApp visible sólo en 30%
     if(model.id==='bonus30'){ const url=bonusWA(); waTop.style.display='inline-flex'; waTop.href=url; askWA.style.display='inline-flex'; askWA.href=url; }
     else{ waTop.style.display='none'; askWA.style.display='none'; }
 
-    // Botón “Ir al juego”
     if(model.id==='bonus30'){ goGame.textContent="🌐 Abrir plataforma"; goGame.href=PLATFORM; }
     else if(model.id==='roulette'){ goGame.textContent="➡️ Abrir Ruleta";   goGame.href="#ruleta"; }
     else if(model.id==='slot'){     goGame.textContent="➡️ Abrir Slot";     goGame.href="#slot"; }
@@ -294,9 +324,8 @@ async function flipAndReveal(el, model){
 
     confetti(); openModal();
 
-    // Si ya no hay más picks, damos vuelta las restantes para mostrar opciones
     setTimeout(()=>{ const canMore = (allowPicks>picked); if(!canMore){ flipRest(); } }, 350);
-  }, 300);
+  }, 280);
 }
 
 function flipRest(){
@@ -317,15 +346,13 @@ function buildBoard(){
 }
 buildBoard();
 
-/* Reset botón (informativo: sólo nuevo día) */
+/* Reset botón (info) */
 document.getElementById('resetBtn').addEventListener('click', ()=>{
   alert('El reset se habilita automáticamente al comenzar un nuevo día.');
 });
-
-/* Countdown */
-function endOfDay(){const n=new Date();const end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,0,0).getTime();return end>Date.now()?end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,23,59,0,0).getTime()}
-function tickCountdown(){const ms=endOfDay()-Date.now();const t=Math.max(0,Math.floor(ms/1000));const h=Math.floor(t/3600),m=Math.floor((t%3600)/60),s=t%60;document.querySelector('#countdown').textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;}
-setInterval(tickCountdown,1000); tickCountdown();
 </script>
+
+<!-- Confetti layer -->
+<div id="confetti" class="confetti" aria-hidden="true"></div>
 </body>
 </html>
