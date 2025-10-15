@@ -3,139 +3,92 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>BET300 · Cartas de beneficios</title>
+<title>BET300 · Elegi tu beneficio</title>
 <meta name="theme-color" content="#0a0f1f"/>
 <style>
 :root{
-  --bg1:#0b0f25;           /* azul noche */
-  --bg2:#1a0f3a;           /* violeta profundo */
-  --panel:#0f1429;
-  --panel2:#0b1026;
-  --border:#1a2250;
-  --text:#e9ecff;
-  --muted:#aab0d6;
-  --ok:#25D366;
-  --accent:#7c4dff;
-  --cyan:#22d3ee;
-  --gold:#ffd166;
-  --danger:#ff5c39;
+  --bg:#0b1020; --panel:#0f142b; --panel2:#0c1228; --border:#1b2350;
+  --text:#eaf0ff; --muted:#a9afd6; --ok:#25D366; --accent:#7c4dff; --cyan:#22d3ee; --gold:#ffd166;
+  --cardBack1:#0e1633; --cardBack2:#0b1331; --glow:#74b3ff;
 }
-
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0;color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto;
-  background: radial-gradient(1200px 700px at 75% -10%, rgba(124,77,255,.25), transparent 60%),
-              radial-gradient(900px 500px at 0% 0%, rgba(0,209,255,.18), transparent 60%),
-              linear-gradient(180deg,var(--bg2) 0%, var(--bg1) 60%, #0a0f1f 100%);
+  margin:0;background:radial-gradient(1000px 600px at 10% -10%, #1a2050 0%, #0b1020 55%, #060a16 100%);
+  color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial
 }
-
-/* Layout */
-.container{max-width:1050px;margin:8px auto 92px;padding:0 12px}
-.card{background:linear-gradient(180deg, rgba(124,77,255,.10), rgba(34,211,238,.06)), var(--panel2); border:1px solid var(--border);
-  border-radius:18px;padding:10px;box-shadow:0 15px 40px rgba(0,0,0,.35)}
-@media(min-width:920px){.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:10px}}
-@media(max-width:560px){.card{border-radius:12px}}
-
-.head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
-.brand{display:flex;align-items:center;gap:8px}
-.brand .logo{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;
-  background:linear-gradient(135deg,#2e6bff,#7c59ff);font-weight:900}
-.brand .name{font-weight:900;letter-spacing:.5px;font-size:22px}
-.pill{background:linear-gradient(90deg,rgba(124,77,255,.13),rgba(0,209,255,.13));border:1px solid var(--border);
-  border-radius:999px;padding:6px 8px;font-size:12px;color:var(--muted)}
+.container{max-width:1200px;margin:10px auto 90px;padding:0 12px}
+.cardWrap{background:linear-gradient(180deg,rgba(124,77,255,.08),rgba(34,211,238,.08)),var(--panel2);border:1px solid var(--border);border-radius:18px;padding:12px;box-shadow:0 15px 40px rgba(0,0,0,.4)}
+@media(min-width:980px){.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}}
+.head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px}
+.badgeB{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#68a4ff,#7c59ff);display:grid;place-items:center;font-weight:900}
+.brand b{font-size:22px}
+.pill{background:linear-gradient(90deg,rgba(124,77,255,.16),rgba(0,209,255,.16));border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
 .pill.time{display:flex;gap:6px;align-items:center}
 .pill.sound{cursor:pointer;user-select:none}
 .count{display:inline-flex;gap:6px;align-items:center;padding:3px 8px;border-radius:999px;background:rgba(255,204,0,.15);
-  border:1px solid rgba(255,204,0,.35);color:#ffe27a;font-weight:700;font-variant-numeric:tabular-nums}
+  border:1px solid rgba(255,204,0,.35);color:#ffe27a;font-weight:800;font-variant-numeric:tabular-nums}
 .rightTop{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btnLink{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border-radius:12px;font-weight:800;
+.btnLink{display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;font-weight:800;
   background:linear-gradient(90deg,#7c59ff,#00d1ff);color:#0a0f1f;text-decoration:none;border:1px solid rgba(255,255,255,.06)}
-.btnLink.green{background:linear-gradient(90deg,#22c55e,#72ff9a)}
 
-/* Panel derecho */
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:10px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:12px}
 .center{text-align:left}
-.stat{display:flex;gap:12px;align-items:center;margin:6px 0 8px}
-.badge{min-width:78px;height:42px;border-radius:10px;background:radial-gradient(100% 100% at 50% 0%, rgba(0,209,255,.35), rgba(124,77,255,.35));
-  display:grid;place-items:center;font-weight:800;font-size:18px;box-shadow:inset 0 0 10px rgba(124,77,255,.35)}
-.smallline{font-size:12px;color:var(--muted)}
+h1,h2,h3,p{margin:0 0 8px}
 .muted{color:var(--muted)}
 
-/* Cartas */
-.deck{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;min-height:260px;
-  align-content:start;justify-items:center;padding:6px;
+/* ====== Cartas ====== */
+.cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px
 }
-@media(max-width:560px){
-  .deck{grid-template-columns:repeat(3,1fr);gap:8px}
+@media(max-width:720px){
+  .cards{grid-template-columns:repeat(3,1fr);gap:10px}
 }
-.cardItem{
-  width:125px;height:165px; perspective: 800px;
+.card{
+  perspective:1100px;height:180px; /* más compacto para reducir scroll */
 }
+@media(max-width:480px){ .card{height:150px} }
 .cardInner{
-  position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1);
-  border-radius:14px;
+  position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 620ms cubic-bezier(.2,.8,.2,1);
+  border-radius:16px; box-shadow:0 10px 28px rgba(0,0,0,.35);
 }
-.cardInner.flip{transform:rotateY(180deg)}
-.cardFace{
-  position:absolute;inset:0;border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  backface-visibility:hidden;border:1px solid #2a2f58;overflow:hidden;
+.cardInner.flip{ transform:rotateY(180deg) }
+.face{
+  position:absolute;inset:0;border-radius:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10px;
+  border:1px solid #26306a; backface-visibility:hidden;
 }
-
-/* Dorso gaming con neón */
-.back{
-  background: radial-gradient(120% 100% at 50% 0%, rgba(124,77,255,.15), transparent 70%), #0c112a;
-  display:grid;place-items:center;
+.face.back{
+  background:radial-gradient(140% 120% at 50% 0%, #0f1a45 0%, #0b1331 60%, #070d24 100%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
 }
-.back .bet{
-  font-weight:900;font-size:28px;letter-spacing:1px;color:#b8ccff;
-  text-shadow:
-    0 0 6px #7aa7ff,
-    0 0 12px #5fb7ff,
-    0 0 22px #49f3ff,
-    0 0 36px rgba(73,243,255,.35);
+.face.back .logoBack{
+  font-weight:900; letter-spacing:2px; font-size:28px; opacity:.9;
+  background:linear-gradient(180deg,#9bd1ff,#8ba1ff 45%,#7c59ff);
+  -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 10px rgba(116,179,255,.35));
+  transform:scaleX(-1); /* BET300 espejado como naipe */
 }
-
-/* Frente */
-.front{
+@media(max-width:480px){ .face.back .logoBack{font-size:22px}}
+.face.front{
   transform:rotateY(180deg);
-  background:linear-gradient(180deg, rgba(124,77,255,.15), rgba(34,211,238,.10));
+  background:
+    radial-gradient(200px 140px at 50% -20%, rgba(255,255,255,.09), transparent 60%),
+    linear-gradient(180deg, rgba(124,77,255,.18), rgba(34,211,238,.18)),
+    linear-gradient(180deg,#0e1635,#0b1331);
 }
-.front h4{margin:0 8px 6px;font-size:16px}
-.front p{margin:0 10px;font-size:12px;color:var(--muted);text-align:center}
-
-/* Colores por tipo (contraste alto sobre fondo) */
-.front.co-30   { background:linear-gradient(180deg,#ffb770,#ff7b3d) }
-.front.ruleta  { background:linear-gradient(180deg,#a78bfa,#7c3aed) }
-.front.slot    { background:linear-gradient(180deg,#60a5fa,#2563eb) }
-.front.memo    { background:linear-gradient(180deg,#34d399,#059669) }
-.front.cofre   { background:linear-gradient(180deg,#facc15,#f59e0b) }
-.front.otra    { background:linear-gradient(180deg,#9ca3af,#6b7280) }
-
-/* Selección */
-.cardInner.winner{box-shadow:0 0 0 3px rgba(124,77,255,.7), 0 0 24px rgba(124,77,255,.35)}
-.cardInner.loser {opacity:.66;}
+.face.front .title{font-weight:900;font-size:18px;margin-bottom:6px}
+.face.front .desc{font-size:13px;color:var(--muted)}
+.cardInner.winner{ box-shadow:0 0 0 2px rgba(124,77,255,.6), 0 0 28px rgba(124,77,255,.35) inset, 0 10px 30px rgba(0,0,0,.4)}
+.cardInner.loser{ opacity:.92 }
 
 /* Dock inferior */
-.dock{
-  position:fixed;left:0;right:0;bottom:0;z-index:20;
-  background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.85) 22%, rgba(11,15,30,.95) 100%);
-  padding:8px 10px 10px;display:flex;gap:8px;flex-wrap:wrap;
-}
-.btn{
-  appearance:none;border:none;cursor:pointer;padding:12px 14px;border-radius:14px;font-weight:800;
-  background:linear-gradient(90deg,#ff9a3d,#ff5c39);color:#0b0f1e;box-shadow:0 8px 20px rgba(0,0,0,.35)
-}
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.88) 24%, rgba(11,15,30,.96) 100%);
+  padding:10px 12px 12px;display:flex;gap:10px;flex-wrap:wrap}
+.btn{appearance:none;border:none;cursor:pointer;padding:12px 14px;border-radius:14px;font-weight:800;background:linear-gradient(90deg,#ff9a3d,#ff5c39);color:#0b0f1e;
+  box-shadow:0 8px 20px rgba(0,0,0,.35)}
 .btn:disabled{opacity:.6;cursor:not-allowed}
 .btn.ok{background:#25D366;color:#0b0f1e}
-.btn.alt{background:linear-gradient(90deg,#22c55e,#72ff9a)}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-
-/* Confetti */
-.confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
-.confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
-@keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+.btn.platform{background:#2bdc6a;color:#07150d}
 
 /* Modal premio */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
@@ -145,77 +98,76 @@ body{
 .modalHead h3{margin:0;font-size:18px}
 .modalBody{display:grid;gap:8px}
 .row{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed var(--border);border-radius:12px;padding:10px}
-.k{color:var(--muted);font-size:13px}.v{font-weight:800}
+.k{color:var(--muted);font-size:13px}
+.v{font-weight:800}
 .actions{display:flex;gap:8px;margin-top:8px}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+.closeX{margin-left:auto;cursor:pointer;opacity:.8}
+.closeX:hover{opacity:1}
 
-/* compact móvil */
-@media(max-width:420px){
-  .badge{min-width:70px;height:38px;font-size:16px}
-  .cardItem{width:110px;height:150px}
-  .front h4{font-size:14px}
+/* Compactaciones móviles extra */
+@media(max-width:520px){
+  .panel{padding:10px}
+  .cards{gap:8px}
 }
 </style>
 </head>
 <body>
-
-<div id="confetti" class="confetti" aria-hidden="true"></div>
-
 <!-- MODAL PREMIO -->
 <div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modalCard">
     <div class="modalHead">
       <h3 id="modalTitle">🎁 Beneficio obtenido</h3>
-      <span id="closeModal" class="btn ghost" style="margin-left:auto">Cerrar</span>
+      <span id="closeModal" class="closeX">✖</span>
     </div>
     <div class="modalBody">
-      <div class="row"><span class="k">Premio</span><span class="v" id="mPrize">—</span></div>
+      <div class="row"><span class="k">Beneficio</span><span class="v" id="mPrize">—</span></div>
       <div class="row"><span class="k">Código</span><span class="v" id="mCode">—</span></div>
       <div class="row"><span class="k">Fecha/Hora</span><span class="v" id="mTs">—</span></div>
-      <div id="mHint" class="smallline"></div>
       <div class="actions">
-        <a id="mGame" class="btn alt" target="_blank" rel="noopener" style="display:none">Ir al juego</a>
-        <a id="mWp" class="btn ok" target="_blank" rel="noopener" style="display:none">Pedir por WhatsApp</a>
-        <a id="mPlatform" class="btn alt" target="_blank" rel="noopener">Plataforma</a>
+        <a id="goPlatform" class="btn platform" target="_blank" rel="noopener">🎮 Ir a la plataforma</a>
+        <button id="mAction" class="btn ok" style="display:none">📲 Pedir por WhatsApp</button>
+        <button id="mClose" class="btn ghost">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <div class="card">
+  <div class="cardWrap">
     <div class="head">
-      <div class="brand"><div class="logo">B3</div><div class="name">BET300</div></div>
+      <div class="brand"><span class="badgeB">B3</span><b>BET300</b></div>
       <span class="pill">Cartas de beneficios</span>
       <span class="pill time">⚡ Tiempo limitado <span class="count" id="countdown">--:--</span></span>
       <span class="pill sound" id="soundToggle">🔊 Sonido: <b id="soundState">ON</b></span>
       <div class="rightTop">
-        <a id="playNow" class="btnLink" target="_blank" rel="noopener">🎮 Plataforma</a>
-        <a id="wpQuick" class="btnLink green" target="_blank" rel="noopener" style="display:none">🟢 WhatsApp</a>
+        <a id="playNow" class="btnLink" target="_blank" rel="noopener"><span>🎮 Plataforma</span></a>
+        <a id="wpTop" class="btnLink" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#25D366,#9BE69C)">💬 WhatsApp</a>
       </div>
     </div>
 
     <div class="grid">
       <div class="panel">
-        <h2 style="margin:0 0 8px">Elegí una carta y descubrí tu beneficio</h2>
-        <div id="deck" class="deck"></div>
-        <div class="smallline" id="hint" style="padding:6px 8px">Tip: mejor visual en vertical 📱</div>
+        <h1>Elegí una carta y descubrí tu beneficio</h1>
+        <div id="cards" class="cards" aria-live="polite"></div>
+        <p class="muted" style="margin-top:6px">Tip: mejor visual en vertical 📱</p>
       </div>
 
       <div class="panel">
         <div class="center">
           <div class="stat">
             <div>
-              <div class="badge" id="badge">-</div>
+              <div class="badge" id="badge" style="min-width:120px;height:40px;border-radius:10px;background:linear-gradient(90deg,#7c59ff,#00d1ff);display:grid;place-items:center;font-weight:900">-</div>
               <div class="smallline" id="stampLine" aria-live="polite"></div>
             </div>
-            <div>
+            <div style="margin-top:6px">
               <h2 id="title">Tenés 1 intento disponible</h2>
               <p class="muted" id="subtitle">Los beneficios se aplican a tu <b>próxima carga</b>.</p>
             </div>
           </div>
         </div>
 
-        <div class="panel" style="margin-top:6px">
+        <div class="panel" style="margin-top:8px">
           <p style="margin-bottom:6px"><b>Resultado actual</b></p>
           <p id="resultLine" class="muted">—</p>
         </div>
@@ -226,50 +178,36 @@ body{
 
 <!-- Dock -->
 <div class="dock">
-  <button id="retryBtn" class="btn ghost" style="flex:1 1 220px;display:none">🔁 Reintentar (si sale “Otra chance”)</button>
-  <a id="quickGameBtn" class="btn alt" style="flex:1 1 220px;display:none" target="_blank" rel="noopener">🎮 Abrir juego</a>
-  <a id="platformBtn" class="btn alt" style="flex:2 1 260px" target="_blank" rel="noopener">🌐 Plataforma</a>
+  <button id="retryBtn" class="btn" style="flex:1;min-width:220px">🔁 Reintentar (si sale “Otra chance”)</button>
+  <a id="platformBtn" class="btn platform" style="flex:1;min-width:220px" target="_blank" rel="noopener">🌐 Plataforma</a>
 </div>
 
 <script>
-/* ===== Plataforma + WhatsApp por PC ===== */
+/* ===== Plataforma + WhatsApp por PC (4 parámetros) ===== */
 const PLATFORM_LINKS = {
-  pc1: "https://plataforma1.example.com/",
-  pc2: "https://plataforma2.example.com/",
-  pc3: "https://plataforma3.example.com/",
-  pc4: "https://plataforma4.example.com/"
-};
-const GAME_LINKS = {          // reemplazá por tus landings reales
-  "30% EXTRA": null,          // se pide por WhatsApp
-  "RULETA": "https://promo.example.com/ruleta",
-  "SLOT": "https://promo.example.com/slot",
-  "MEMO PLAY": "https://promo.example.com/memory",
-  "COFRE MISTERIOSO": "https://promo.example.com/cofre",
-  "OTRA CHANCE": null
+  pc1: "https://plataforma-01.ejemplo.com/",
+  pc2: "https://plataforma-02.ejemplo.com/",
+  pc3: "https://plataforma-03.ejemplo.com/",
+  pc4: "https://plataforma-04.ejemplo.com/",
 };
 const WP_NUMBERS = {
-  pc1: "5491131583516",
-  pc2: "5491126695257",
-  pc3: "5491125368306",
-  pc4: "5491150030414"
+  pc1: "5491111111111",
+  pc2: "5491122222222",
+  pc3: "5491133333333",
+  pc4: "5491144444444",
 };
 const params = new URLSearchParams(location.search);
-const pc = (params.get('pc')||"1").trim();
-const pcKey = "pc"+(pc.match(/^[1-4]$/)?pc:"1");
-const PLATFORM = PLATFORM_LINKS[pcKey];
-const WP = WP_NUMBERS[pcKey];
-document.getElementById('playNow').href = PLATFORM;
-document.getElementById('platformBtn').href = PLATFORM;
-document.getElementById('mPlatform').href = PLATFORM;
+const pcParam = (params.get("pc") || "1").trim();
+const pcKey = "pc" + (pcParam.match(/^[1-4]$/) ? pcParam : "1");
+document.getElementById("playNow").href = PLATFORM_LINKS[pcKey];
+document.getElementById("platformBtn").href = PLATFORM_LINKS[pcKey];
+document.getElementById("wpTop").href = `https://wa.me/${WP_NUMBERS[pcKey]}`;
 
-/* ===== Antifraude / utilidades ===== */
+/* ===== Utilidades base ===== */
 const SALT = "bet300-cards-v2";
 function ensureDeviceId(){
   let id = localStorage.getItem('device_id');
-  if(!id){
-    id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`);
-    localStorage.setItem('device_id', id);
-  }
+  if(!id){ id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('device_id', id); }
   return id;
 }
 const DEVICE_ID = ensureDeviceId();
@@ -284,292 +222,222 @@ async function sha256hex(msg){
   const buf = await crypto.subtle.digest("SHA-256", enc);
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
 }
-async function makeClaimCode(prizeLabel){
-  const base = `${DEVICE_ID}|${todayKey()}|${prizeLabel}|pc:${pc}|${SALT}`;
+async function makeClaimCode(label){
+  const base = `${DEVICE_ID}|${todayKey()}|${label}|pc:${pcParam}|${SALT}`;
   const hex = await sha256hex(base);
   return hex.slice(0,10).toUpperCase();
 }
-function money(n){ return "$"+n.toLocaleString("es-AR"); }
+function logAudit(entry){
+  const key='cards_audit';
+  const arr = JSON.parse(localStorage.getItem(key) || "[]");
+  arr.push(entry);
+  localStorage.setItem(key, JSON.stringify(arr).slice(-5000)); // recorta a ~últimos 5k chars
+}
 
-/* ===== Sonido mínimo ===== */
+/* ===== Sonido ===== */
 let soundOn = true;
 const soundToggle = document.getElementById('soundToggle');
 const soundState  = document.getElementById('soundState');
-const AudioKit = (()=>{
+const AudioKit = (()=>{ try{
   const Ctx = window.AudioContext || window.webkitAudioContext;
   const ctx = new Ctx(); let unlocked=false;
   function unlock(){ if(!unlocked){ ctx.resume().catch(()=>{}); unlocked=true; } }
-  function click(freq=900,dur=0.055,vol=0.07){
-    const o=ctx.createOscillator(), g=ctx.createGain(); o.type='triangle'; o.frequency.value=freq; g.gain.value=0; o.connect(g).connect(ctx.destination);
-    const t=ctx.currentTime; g.gain.linearRampToValueAtTime(vol, t+0.006); g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
+  function click(freq=900,dur=0.035,vol=0.06){
+    const o=ctx.createOscillator(), g=ctx.createGain(); o.type='square'; o.frequency.value=freq; g.gain.value=0; o.connect(g).connect(ctx.destination);
+    const t=ctx.currentTime; g.gain.linearRampToValueAtTime(vol, t+0.005); g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
     o.start(t); o.stop(t+dur);
   }
   function win(){ [660,880,1320].forEach((f,i)=>setTimeout(()=>click(f,0.12,0.09), i*120)); }
   return {ctx,unlock,click,win};
-})();
+}catch(e){return {unlock(){},click(){},win(){}} })();
 document.addEventListener('click',()=>AudioKit.unlock(),{once:true});
 soundToggle.addEventListener('click',()=>{ soundOn=!soundOn; soundState.textContent=soundOn?'ON':'OFF';});
 
-/* ===== Confetti ===== */
-function confettiBurst(){
-  const el=document.getElementById('confetti'); el.innerHTML='';
-  const n=28;
-  for(let i=0;i<n;i++){
-    const p=document.createElement('i');
-    p.style.left=(Math.random()*100)+'vw';
-    p.style.animationDelay=(Math.random()*0.5)+'s';
-    p.style.background = Math.random()<.5?'linear-gradient(#80ffea,#4e9cff)':'linear-gradient(#ffd166,#ff3d7f)';
-    el.appendChild(p);
-  }
-  setTimeout(()=>{el.innerHTML='';},1800);
-}
-
-/* ===== Log simple ===== */
-function appendLog(entry){
-  const key='cards_log';
-  const arr = JSON.parse(localStorage.getItem(key)||'[]');
-  arr.push(entry);
-  localStorage.setItem(key, JSON.stringify(arr).slice(-500)); // guarda últimos (limit rudimentario)
-}
-
-/* ===== Estado / countdown ===== */
-function restoreDaily(){
-  const today=todayKey(); const stored=localStorage.getItem('cards_date');
-  if(stored && stored!==today){
-    ['cards_done','cards_prize','cards_code','cards_ts','cards_result','cards_winnerIndex'].forEach(k=>localStorage.removeItem(k));
-    localStorage.setItem('cards_date',today);
-  }else if(!stored){ localStorage.setItem('cards_date',today); }
-}
-function scheduleMidnightReset(){
-  const now=new Date(); const midnight=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1,0,0,5,0);
-  setTimeout(()=>{['cards_done','cards_prize','cards_code','cards_ts','cards_result','cards_winnerIndex'].forEach(k=>localStorage.removeItem(k)); localStorage.setItem('cards_date',todayKey());
-    title.textContent='Tenés 1 intento disponible'; subtitle.innerHTML='Los beneficios se aplican a tu <b>próxima carga</b>.';
-    resultLine.textContent='—'; stampEl.textContent=''; badge.textContent='-'; document.getElementById('deck').innerHTML=''; buildDeck(); 
-  }, midnight.getTime()-now.getTime());
-}
-function endOfDay(){const n=new Date();const end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,0,0).getTime();
-  return end>Date.now()?end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,23,59,0,0).getTime()}
+/* ===== Countdown simple (3:59 demo) ===== */
+const endTs = Date.now() + 4*60*1000;
 function tickCountdown(){
-  const ms=endOfDay()-Date.now(); const total=Math.max(0,Math.floor(ms/1000));
-  const h=Math.floor(total/3600), m=Math.floor((total%3600)/60), s=total%60;
-  document.getElementById('countdown').textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  const ms=endTs-Date.now(); const total=Math.max(0,Math.floor(ms/1000));
+  const m=Math.floor((total%3600)/60), s=total%60;
+  document.getElementById('countdown').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
 }
+setInterval(tickCountdown,1000); tickCountdown();
 
-/* ===== UI refs ===== */
-const title = document.getElementById('title');
-const subtitle = document.getElementById('subtitle');
+/* ===== Beneficios (rotan de lugar en cada carga) ===== */
+const PRIZES = [
+  { id:'cofre',  title:'COFRE MISTERIOSO',  desc:'Premio asegurado.', kind:'landing', link:'#cofre' },
+  { id:'memo',   title:'MEMO PLAY',         desc:'Probá suerte en el Memory.',      kind:'landing', link:'#memo' },
+  { id:'otra',   title:'OTRA CHANCE',       desc:'Podés elegir otra carta.',        kind:'retry'   },
+  { id:'extra',  title:'30% EXTRA',         desc:'Pedilo por WhatsApp y aplicá el extra en tu próxima carga.', kind:'whatsapp' },
+  { id:'ruleta', title:'RULETA',            desc:'Accedé a la ruleta de beneficios.', kind:'landing', link:'#ruleta' },
+  { id:'slot',   title:'SLOT',              desc:'Girá por extra en la próxima carga.', kind:'landing', link:'#slot' },
+];
+
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
+
+/* ===== UI Refs ===== */
+const cardsEl = document.getElementById('cards');
+const badge   = document.getElementById('badge');
+const title   = document.getElementById('title');
+const subtitle= document.getElementById('subtitle');
 const resultLine = document.getElementById('resultLine');
 const stampEl = document.getElementById('stampLine');
-const badge = document.getElementById('badge');
-const wpQuick = document.getElementById('wpQuick');
-const quickGameBtn = document.getElementById('quickGameBtn');
-const retryBtn = document.getElementById('retryBtn');
+const retryBtn= document.getElementById('retryBtn');
 
-/* ===== Modal refs ===== */
+/* Modal */
 const prizeModal = document.getElementById('prizeModal');
 const mPrize = document.getElementById('mPrize');
-const mCode = document.getElementById('mCode');
-const mTs = document.getElementById('mTs');
-const mHint = document.getElementById('mHint');
-const mGame = document.getElementById('mGame');
-const mWp = document.getElementById('mWp');
-const mPlatform = document.getElementById('mPlatform');
-document.getElementById('closeModal').onclick = ()=> prizeModal.classList.remove('show');
-prizeModal.addEventListener('click',e=>{ if(e.target===prizeModal) prizeModal.classList.remove('show'); });
+const mCode  = document.getElementById('mCode');
+const mTs    = document.getElementById('mTs');
+const mAction= document.getElementById('mAction');
+const mClose = document.getElementById('mClose');
+const closeModalX = document.getElementById('closeModal');
+const goPlatform = document.getElementById('goPlatform');
 
-/* ===== Deck / premios ===== */
-const PRIZES = [
-  {key:'COFRE MISTERIOSO', cls:'cofre',  desc:'Premio asegurado en su landing.'},
-  {key:'MEMO PLAY',       cls:'memo',   desc:'Probá suerte en el Memory.'},
-  {key:'OTRA CHANCE',     cls:'otra',   desc:'Podés elegir otra carta.'},
-  {key:'30% EXTRA',       cls:'co-30',  desc:'Pedilo por WhatsApp y aplicá el extra en tu próxima carga.'},
-  {key:'RULETA',          cls:'ruleta', desc:'Accedé a la ruleta de beneficios.'},
-  {key:'SLOT',            cls:'slot',   desc:'Girá por extra en la próxima carga.'}
-];
-// probabilidad simple: todas iguales (podés ajustar ponderando índices)
-function chooseWinnerIndex(){ return Math.floor(Math.random()*PRIZES.length); }
+function openModal(prizeLabel, code, ts, prizeObj){
+  mPrize.textContent = prizeLabel;
+  mCode.textContent  = code;
+  mTs.textContent    = ts;
+  goPlatform.href = PLATFORM_LINKS[pcKey];
 
-let picked=false, winnerIndex=null;
+  // Solo para 30% EXTRA mostramos WhatsApp directo (según PC)
+  if(prizeObj?.id === 'extra'){
+    mAction.style.display='';
+    mAction.onclick = ()=> location.href=`https://wa.me/${WP_NUMBERS[pcKey]}?text=${encodeURIComponent('Hola! Quiero pedir mi 30% EXTRA de la promo de cartas (código '+code+').')}`;
+  }else{
+    mAction.style.display='none';
+  }
+  prizeModal.classList.add('show');
+}
+function closeModal(){ prizeModal.classList.remove('show'); }
+mClose.onclick = closeModal; closeModalX.onclick = closeModal;
+prizeModal.addEventListener('click',e=>{ if(e.target===prizeModal) closeModal(); });
+
+/* ===== Cartas ===== */
+let picked=false, winnerIndex=null, mapIds=[];
+
+// gira TODAS las cartas luego del premio (nuevo)
+function flipAllAfterPrize(){
+  document.querySelectorAll('.cardInner').forEach(el=>el.classList.add('flip'));
+}
 
 function buildCard(prize, index){
-  const wrap = document.createElement('div');
-  wrap.className='cardItem';
-  const inner = document.createElement('div');
-  inner.className='cardInner';
-  const back = document.createElement('div');
-  back.className='cardFace back';
-  const btxt = document.createElement('div');
-  btxt.className='bet'; btxt.textContent='BET300';
-  back.appendChild(btxt);
+  const wrap = document.createElement('div'); wrap.className='card';
+  const inner = document.createElement('div'); inner.className='cardInner'; wrap.appendChild(inner);
 
-  const front = document.createElement('div');
-  front.className=`cardFace front ${prize.cls}`;
-  front.innerHTML = `<h4>${prize.key}</h4><p>${prize.desc}</p>`;
+  const back = document.createElement('div'); back.className='face back';
+  back.innerHTML = `<div class="logoBack">BET300</div>`;
+  const front = document.createElement('div'); front.className='face front';
+  front.innerHTML = `<div class="title">${prize.title}</div><div class="desc">${prize.desc}</div>`;
 
-  inner.appendChild(back); inner.appendChild(front); wrap.appendChild(inner);
+  inner.appendChild(back); inner.appendChild(front);
 
-  // interacción
   wrap.addEventListener('click', async ()=>{
-    if(picked && index!==winnerIndex) return; // ignorar si ya se eligió otra
-    if(soundOn) AudioKit.click(980, .08, .09);
+    if(picked && index!==winnerIndex) return;
+    if(soundOn) AudioKit.click(980,.08,.09);
 
+    // gira SOLO la tocada
+    inner.classList.add('flip');
+
+    // define ganador la 1ª vez de manera aleatoria (mantengo lógica original)
     if(!picked){
       picked = true;
-      // decidir ganador en el primer click
-      winnerIndex = chooseWinnerIndex();
+      winnerIndex = Math.floor(Math.random()*PRIZES.length);
       localStorage.setItem('cards_winnerIndex', String(winnerIndex));
     }
 
-    // girar todas (para mostrar opciones)
-    revealAll();
-
-    // marcar visualmente
-    const inners = [...document.querySelectorAll('.cardInner')];
+    // marca winner/loser visualmente
+    const inners=[...document.querySelectorAll('.cardInner')];
     inners.forEach((el,i)=> el.classList.toggle('winner', i===winnerIndex));
     inners.forEach((el,i)=> el.classList.toggle('loser',  i!==winnerIndex));
 
-    const selectedPrize = PRIZES[winnerIndex];
-    await grantPrize(selectedPrize);
+    // otorga premio
+    await grantPrize(PRIZES[winnerIndex]);
+
+    // AHORA: gira TODAS para mostrar opciones
+    setTimeout(flipAllAfterPrize, 250);
   });
 
   return wrap;
 }
 
-function revealAll(){
-  document.querySelectorAll('.cardInner').forEach(el=>el.classList.add('flip'));
+function renderCards(){
+  cardsEl.innerHTML='';
+  const shuffled = shuffle(PRIZES.slice());
+  mapIds = shuffled.map(p=>p.id);
+  shuffled.forEach((p,i)=> cardsEl.appendChild(buildCard(p,i)));
 }
 
-function buildDeck(){
-  const deck = document.getElementById('deck');
-  deck.innerHTML='';
-  // render inmediato con dorsos para que “aparezca al instante”
-  const order = [...PRIZES]; // si querés mezclar: order.sort(()=>Math.random()-.5);
-  order.forEach((p,i)=> deck.appendChild(buildCard(p,i)));
-}
-
-/* ===== Otorgamiento ===== */
-async function grantPrize(p){
-  // ya otorgado hoy?
-  if(localStorage.getItem('cards_done')==='1'){
-    showSaved(); return;
-  }
-
-  const prizeLabel = p.key;
-  const code = await makeClaimCode(prizeLabel);
-  const ts = tsString(new Date());
-
-  // persistir
+async function grantPrize(prize){
+  const ts   = tsString(new Date());
+  const code = await makeClaimCode(prize.title);
+  localStorage.setItem('cards_done','1');
+  localStorage.setItem('cards_prize', JSON.stringify(prize));
   localStorage.setItem('cards_code', code);
   localStorage.setItem('cards_ts', ts);
-  localStorage.setItem('cards_prize', prizeLabel);
-  localStorage.setItem('cards_result', prizeLabel);
-  localStorage.setItem('cards_done','1');
 
-  // UI derecha
-  badge.textContent = prizeLabel.includes('%') ? prizeLabel : '-';
-  title.textContent = `🎉 ${prizeLabel}`;
-  subtitle.innerHTML = (prizeLabel==='30% EXTRA')
-    ? `Pedilo por <b>WhatsApp</b>.`
-    : `Abrí la landing para usarlo en tu <b>próxima carga</b>.`;
-  resultLine.textContent = `Resultado: ${prizeLabel}`;
+  badge.textContent = prize.title;
+  title.textContent = prize.title === 'OTRA CHANCE' ? '🎯 ¡Otra chance habilitada!' : `🎉 ${prize.title}`;
+  subtitle.innerHTML = (prize.id==='extra') ? 'Pedilo por <b>WhatsApp</b>.' : 'Usalo desde su landing o plataforma.';
+  resultLine.textContent = `Resultado: ${prize.title}`;
   stampEl.textContent = `Código: ${code} · ${ts}`;
 
-  // Quick buttons (dock/top)
-  const link = GAME_LINKS[prizeLabel];
-  if(link){ quickGameBtn.href = link; quickGameBtn.style.display='inline-flex'; }
-  else quickGameBtn.style.display='none';
+  // log auditoría
+  logAudit({when:Date.now(), prize:prize.id, code, map:mapIds});
 
-  if(prizeLabel==='30% EXTRA'){
-    const msg = encodeURIComponent(`Hola, tengo ${prizeLabel} de BET300 y quiero aplicarlo a mi próxima carga. Código: ${code} · ${ts}`);
-    const wplink = `https://wa.me/${WP}?text=${msg}`;
-    mWp.href = wplink; mWp.style.display='inline-flex';
-    wpQuick.href = wplink; wpQuick.style.display='inline-flex';
-  }else{
-    mWp.style.display='none';
-    wpQuick.style.display='none';
-  }
+  // botón “reintentar” solo si sale otra chance
+  retryBtn.disabled = (prize.id!=='otra');
 
-  // modal
-  mPrize.textContent = prizeLabel;
-  mCode.textContent  = code;
-  mTs.textContent    = ts;
-  mHint.textContent  = (prizeLabel==='30% EXTRA') ? 'Pedilo por WhatsApp y aplicalo en tu próxima carga.' : 'Abrí el juego para continuar.';
-  if(link){ mGame.href = link; mGame.style.display='inline-flex'; } else { mGame.style.display='none'; }
-  prizeModal.classList.add('show');
+  if(soundOn) AudioKit.win();
 
-  // confetti + sonido
-  confettiBurst(); if(soundOn) AudioKit.win();
-
-  // log
-  appendLog({ts, pc:pcKey, device:DEVICE_ID, prize:prizeLabel, code});
+  // Modal con acción especial si corresponde
+  openModal(prize.title, code, ts, prize);
 }
 
 function showSaved(){
-  const prizeLabel = localStorage.getItem('cards_prize') || '—';
-  const code = localStorage.getItem('cards_code') || '—';
-  const ts = localStorage.getItem('cards_ts') || tsString();
-  badge.textContent = prizeLabel.includes('%') ? prizeLabel : '-';
-  title.textContent = `🎉 ${prizeLabel}`;
-  subtitle.innerHTML = (prizeLabel==='30% EXTRA') ? `Pedilo por <b>WhatsApp</b>.` : `Abrí la landing para usarlo.`;
-  resultLine.textContent = `Resultado: ${prizeLabel}`;
-  stampEl.textContent = `Código: ${code} · ${ts}`;
+  const done=localStorage.getItem('cards_done')==='1';
+  const saved=localStorage.getItem('cards_prize');
+  if(done && saved){
+    const p=JSON.parse(saved);
+    const code = localStorage.getItem('cards_code') || '—';
+    const ts   = localStorage.getItem('cards_ts')   || tsString();
+    badge.textContent=p.title; title.textContent = p.title==='OTRA CHANCE'?'🎯 ¡Otra chance habilitada!':`🎉 ${p.title}`;
+    subtitle.innerHTML = (p.id==='extra') ? 'Pedilo por <b>WhatsApp</b>.' : 'Usalo desde su landing o plataforma.';
+    stampEl.textContent=`Código: ${code} · ${ts}`;
+    resultLine.textContent=`Resultado: ${p.title}`;
+    retryBtn.disabled = (p.id!=='otra');
 
-  const link = GAME_LINKS[prizeLabel];
-  if(link){ quickGameBtn.href = link; quickGameBtn.style.display='inline-flex'; }
-  else quickGameBtn.style.display='none';
-
-  if(prizeLabel==='30% EXTRA'){
-    const msg = encodeURIComponent(`Hola, tengo ${prizeLabel} de BET300 y quiero aplicarlo a mi próxima carga. Código: ${code} · ${ts}`);
-    const wplink = `https://wa.me/${WP}?text=${msg}`;
-    mWp.href = wplink; mWp.style.display='inline-flex';
-    wpQuick.href = wplink; wpQuick.style.display='inline-flex';
-  }else{
-    mWp.style.display='none';
-    wpQuick.style.display='none';
-  }
-
-  // girar todas y remarcar ganadora si existe
-  const savedIndex = Number(localStorage.getItem('cards_winnerIndex'));
-  if(!Number.isNaN(savedIndex)){
-    winnerIndex = savedIndex; picked = true;
-    revealAll();
-    const inners = [...document.querySelectorAll('.cardInner')];
-    inners.forEach((el,i)=> el.classList.toggle('winner', i===winnerIndex));
-    inners.forEach((el,i)=> el.classList.toggle('loser',  i!==winnerIndex));
+    // visual: todas dadas vuelta para mostrar opciones
+    setTimeout(flipAllAfterPrize, 0);
   }
 }
 
-/* ===== Otra chance (permite reintentar sólo si el premio fue “OTRA CHANCE”) ===== */
 retryBtn.addEventListener('click', ()=>{
-  const last = localStorage.getItem('cards_prize');
-  if(last === 'OTRA CHANCE'){
-    ['cards_done','cards_prize','cards_code','cards_ts','cards_result','cards_winnerIndex'].forEach(k=>localStorage.removeItem(k));
-    picked=false; winnerIndex=null;
-    title.textContent='Tenés 1 intento disponible';
-    subtitle.innerHTML='Los beneficios se aplican a tu <b>próxima carga</b>.';
-    resultLine.textContent='—'; stampEl.textContent=''; badge.textContent='-';
-    document.getElementById('deck').innerHTML=''; buildDeck();
-    retryBtn.style.display='none';
-  }else{
-    alert('El reintento sólo aplica cuando salió “Otra chance”.');
-  }
+  const done=localStorage.getItem('cards_done')==='1';
+  const saved=localStorage.getItem('cards_prize');
+  if(!(done && saved)) return;
+
+  const p=JSON.parse(saved);
+  if(p.id!=='otra'){ alert('Solo disponible si salió "Otra chance".'); return; }
+
+  // reset del intento (conservar día)
+  localStorage.removeItem('cards_done');
+  localStorage.removeItem('cards_prize');
+  localStorage.removeItem('cards_code');
+  localStorage.removeItem('cards_ts');
+
+  // reset visual
+  picked=false; winnerIndex=null;
+  renderCards();
+  badge.textContent='-'; title.textContent='Tenés 1 intento disponible';
+  subtitle.innerHTML='Los beneficios se aplican a tu <b>próxima carga</b>.';
+  stampEl.textContent=''; resultLine.textContent='—';
+  retryBtn.disabled=true;
 });
 
 /* ===== Init ===== */
 function init(){
-  document.getElementById('platformBtn').href = PLATFORM;
-  document.getElementById('playNow').href = PLATFORM;
-
-  restoreDaily();
-  buildDeck();
-
-  if(localStorage.getItem('cards_done')==='1') showSaved();
-
-  // mostrar botón de reintento si corresponde
-  if(localStorage.getItem('cards_prize')==='OTRA CHANCE'){ retryBtn.style.display='inline-flex'; }
-
-  tickCountdown(); setInterval(tickCountdown,1000);
-  scheduleMidnightReset();
+  renderCards();
+  showSaved();
 }
 init();
 </script>
