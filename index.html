@@ -3,215 +3,231 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>BET300 · Elegi tu beneficio</title>
-<meta name="theme-color" content="#0a0f1f"/>
+<title>BET300 · Promo Cubo</title>
+<meta name="theme-color" content="#0b1120"/>
 <style>
-:root{
-  --bg:#0b1020; --panel:#0f142b; --panel2:#0c1228; --border:#1b2350;
-  --text:#eaf0ff; --muted:#a9afd6; --ok:#25D366; --accent:#7c4dff; --cyan:#22d3ee; --gold:#ffd166;
-  --cardBack1:#0e1633; --cardBack2:#0b1331; --glow:#74b3ff;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  margin:0;background:radial-gradient(1000px 600px at 10% -10%, #1a2050 0%, #0b1020 55%, #060a16 100%);
-  color:var(--text);font:16px/1.35 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial
-}
-.container{max-width:1200px;margin:10px auto 90px;padding:0 12px}
-.cardWrap{background:linear-gradient(180deg,rgba(124,77,255,.08),rgba(34,211,238,.08)),var(--panel2);border:1px solid var(--border);border-radius:18px;padding:12px;box-shadow:0 15px 40px rgba(0,0,0,.4)}
-@media(min-width:980px){.grid{display:grid;grid-template-columns:1.05fr .95fr;gap:12px}}
-.head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px}
-.badgeB{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#68a4ff,#7c59ff);display:grid;place-items:center;font-weight:900}
-.brand b{font-size:22px}
-.pill{background:linear-gradient(90deg,rgba(124,77,255,.16),rgba(0,209,255,.16));border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
-.pill.time{display:flex;gap:6px;align-items:center}
-.pill.sound{cursor:pointer;user-select:none}
-.count{display:inline-flex;gap:6px;align-items:center;padding:3px 8px;border-radius:999px;background:rgba(255,204,0,.15);
-  border:1px solid rgba(255,204,0,.35);color:#ffe27a;font-weight:800;font-variant-numeric:tabular-nums}
-.rightTop{margin-left:auto;display:flex;gap:8px;align-items:center}
-.btnLink{display:inline-flex;gap:8px;align-items:center;padding:10px 12px;border-radius:12px;font-weight:800;
-  background:linear-gradient(90deg,#7c59ff,#00d1ff);color:#0a0f1f;text-decoration:none;border:1px solid rgba(255,255,255,.06)}
+  :root{
+    --bg:#0b1120; --panel:#0f172a; --panel2:#0b1326; --border:#1e2a4a;
+    --text:#e8ecff; --muted:#9aa3c7; --accent:#49b6ff; --gold:#e8c25e; --ok:#25d366;
+    --cube:#111a33; --glow:#7c59ff; --cyan:#22d3ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto}
+  .wrap{max-width:960px;margin:18px auto 90px;padding:0 14px}
+  .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  .brandBox{display:flex;align-items:center;gap:10px}
+  .logo{height:48px;display:block}
+  .brandText{font-weight:900;letter-spacing:.6px;font-size:28px;
+    background:linear-gradient(180deg,#fff,#f6e6b0 65%,#caa94b);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .pill{margin-left:auto;background:rgba(73,182,255,.12);border:1px solid var(--border);
+    border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.35)}
 
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:12px}
-.center{text-align:left}
-h1,h2,h3,p{margin:0 0 8px}
-.muted{color:var(--muted)}
+  .grid{display:grid;gap:12px}
+  @media(min-width:900px){.grid{grid-template-columns:1.05fr .95fr}}
 
-/* ====== Cartas ====== */
-.cards{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px
-}
-@media(max-width:720px){
-  .cards{grid-template-columns:repeat(3,1fr);gap:10px}
-}
-.card{
-  perspective:1100px;height:180px; /* más compacto para reducir scroll */
-}
-@media(max-width:480px){ .card{height:150px} }
-.cardInner{
-  position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 620ms cubic-bezier(.2,.8,.2,1);
-  border-radius:16px; box-shadow:0 10px 28px rgba(0,0,0,.35);
-}
-.cardInner.flip{ transform:rotateY(180deg) }
-.face{
-  position:absolute;inset:0;border-radius:16px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10px;
-  border:1px solid #26306a; backface-visibility:hidden;
-}
-.face.back{
-  background:radial-gradient(140% 120% at 50% 0%, #0f1a45 0%, #0b1331 60%, #070d24 100%);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
-}
-.face.back .logoBack{
-  font-weight:900; letter-spacing:2px; font-size:28px; opacity:.9;
-  background:linear-gradient(180deg,#9bd1ff,#8ba1ff 45%,#7c59ff);
-  -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 0 10px rgba(116,179,255,.35));
-  transform:scaleX(-1); /* BET300 espejado como naipe */
-}
-@media(max-width:480px){ .face.back .logoBack{font-size:22px}}
-.face.front{
-  transform:rotateY(180deg);
-  background:
-    radial-gradient(200px 140px at 50% -20%, rgba(255,255,255,.09), transparent 60%),
-    linear-gradient(180deg, rgba(124,77,255,.18), rgba(34,211,238,.18)),
-    linear-gradient(180deg,#0e1635,#0b1331);
-}
-.face.front .title{font-weight:900;font-size:18px;margin-bottom:6px}
-.face.front .desc{font-size:13px;color:var(--muted)}
-.cardInner.winner{ box-shadow:0 0 0 2px rgba(124,77,255,.6), 0 0 28px rgba(124,77,255,.35) inset, 0 10px 30px rgba(0,0,0,.4)}
-.cardInner.loser{ opacity:.92 }
+  .stage{display:grid;place-items:center;background:
+    radial-gradient(80% 120% at 50% 0%,rgba(124,89,255,.12),transparent),
+    radial-gradient(60% 100% at 0% 100%,rgba(34,211,238,.10),transparent),
+    var(--panel2);
+    border:1px solid var(--border);border-radius:16px;min-height:360px;position:relative;overflow:hidden}
+  .btn{appearance:none;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:800}
+  .btn.primary{background:linear-gradient(90deg,#ffd48a,#e9b84f);color:#09121f;box-shadow:0 10px 24px rgba(233,184,79,.25)}
+  .btn.secondary{background:#1fbf61;color:#07131e;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 20px rgba(31,191,97,.25)}
+  .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
+  .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
 
-/* Dock inferior */
-.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.88) 24%, rgba(11,15,30,.96) 100%);
-  padding:10px 12px 12px;display:flex;gap:10px;flex-wrap:wrap}
-.btn{appearance:none;border:none;cursor:pointer;padding:12px 14px;border-radius:14px;font-weight:800;background:linear-gradient(90deg,#ff9a3d,#ff5c39);color:#0b0f1e;
-  box-shadow:0 8px 20px rgba(0,0,0,.35)}
-.btn:disabled{opacity:.6;cursor:not-allowed}
-.btn.ok{background:#25D366;color:#0b0f1e}
-.btn.platform{background:#2bdc6a;color:#07150d}
+  /* CUBE 3D */
+  .cubeWrap{width:min(420px,88vw);height:min(420px,88vw);max-height:420px;perspective:1200px}
+  .cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1200ms cubic-bezier(.22,1,.36,1)}
+  .face{
+    position:absolute;inset:0;display:grid;place-items:center;border-radius:16px;
+    background:linear-gradient(180deg,#0f1a39,#0b132a);
+    border:1px solid #2a3660; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 20px 50px rgba(0,0,0,.45);
+  }
+  .face h2{margin:0;font-weight:900;letter-spacing:.6px;text-transform:uppercase}
+  .face p{margin:6px 0 0;color:var(--muted);font-size:13px}
+  /* colores por cara */
+  .f-ruleta {background:linear-gradient(180deg,#1b2548,#121b36)}
+  .f-slot   {background:linear-gradient(180deg,#1a2d3f,#102235)}
+  .f-cofre  {background:linear-gradient(180deg,#2a243f,#171531)}
+  .f-memo   {background:linear-gradient(180deg,#203241,#142536)}
+  .glow{position:absolute;inset:-2px;border-radius:18px;box-shadow:0 0 28px rgba(124,89,255,.35), 0 0 18px rgba(34,211,238,.25);opacity:0;transition:opacity .25s}
+  .face.active .glow{opacity:1}
 
-/* Modal premio */
-.modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
-.modal.show{display:flex}
-.modalCard{width:min(520px,92vw);background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
-.modalHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.modalHead h3{margin:0;font-size:18px}
-.modalBody{display:grid;gap:8px}
-.row{display:flex;gap:8px;align-items:center;justify-content:space-between;border:1px dashed var(--border);border-radius:12px;padding:10px}
-.k{color:var(--muted);font-size:13px}
-.v{font-weight:800}
-.actions{display:flex;gap:8px;margin-top:8px}
-.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-.closeX{margin-left:auto;cursor:pointer;opacity:.8}
-.closeX:hover{opacity:1}
+  /* posicionar caras (cubo de 4 caras alrededor del eje Y) */
+  .cube .face{--z: calc(var(--size,50vmin)/2); }
+  .front {transform:translateZ(var(--z))}
+  .right {transform:rotateY(90deg) translateZ(var(--z))}
+  .back  {transform:rotateY(180deg) translateZ(var(--z))}
+  .left  {transform:rotateY(-90deg) translateZ(var(--z))}
 
-/* Compactaciones móviles extra */
-@media(max-width:520px){
-  .panel{padding:10px}
-  .cards{gap:8px}
-}
+  /* panel lateral */
+  .side{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:12px}
+  .side h3{margin:0 0 8px}
+  .row{display:flex;justify-content:space-between;align-items:center;margin:6px 0;padding:8px;border:1px dashed var(--border);border-radius:12px}
+  .k{color:var(--muted);font-size:13px}
+  .v{font-weight:800}
+  .small{font-size:12px;color:var(--muted)}
+
+  /* Confetti */
+  .confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
+  .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
+  @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
+
+  /* Modal */
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
+  .modal.show{display:flex}
+  .modalCard{width:min(520px,92vw);background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
+  .modalHead{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .modalHead h3{margin:0;font-size:18px}
+  .closeX{margin-left:auto;cursor:pointer;opacity:.8}
+  .closeX:hover{opacity:1}
+
+  /* Dock */
+  .dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.85) 22%, rgba(11,15,30,.95) 100%);
+    padding:8px 10px 10px;display:flex;gap:8px}
+  .btn.full{width:100%}
+
+  /* Compacto móvil */
+  @media(max-width:420px){
+    .cubeWrap{height:78vw;max-height:none}
+    .face h2{font-size:18px}
+  }
 </style>
 </head>
 <body>
-<!-- MODAL PREMIO -->
-<div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-  <div class="modalCard">
-    <div class="modalHead">
-      <h3 id="modalTitle">🎁 Beneficio obtenido</h3>
-      <span id="closeModal" class="closeX">✖</span>
-    </div>
-    <div class="modalBody">
-      <div class="row"><span class="k">Beneficio</span><span class="v" id="mPrize">—</span></div>
-      <div class="row"><span class="k">Código</span><span class="v" id="mCode">—</span></div>
-      <div class="row"><span class="k">Fecha/Hora</span><span class="v" id="mTs">—</span></div>
-      <div class="actions">
-        <a id="goPlatform" class="btn platform" target="_blank" rel="noopener">🎮 Ir a la plataforma</a>
-        <button id="mAction" class="btn ok" style="display:none">📲 Pedir por WhatsApp</button>
-        <button id="mClose" class="btn ghost">Cerrar</button>
+  <div id="confetti" class="confetti" aria-hidden="true"></div>
+
+  <!-- MODAL -->
+  <div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modalCard">
+      <div class="modalHead">
+        <h3 id="modalTitle">🎁 Beneficio obtenido</h3>
+        <span id="closeModal" class="closeX">✖</span>
+      </div>
+      <div class="modalBody">
+        <div class="row"><span class="k">Promo</span><span class="v" id="mPrize">—</span></div>
+        <div class="row"><span class="k">Código</span><span class="v" id="mCode">—</span></div>
+        <div class="row"><span class="k">Fecha/Hora</span><span class="v" id="mTs">—</span></div>
+        <div class="actions">
+          <button id="mToGame" class="btn ghost">Ir al detalle</button>
+          <button id="mToPlatform" class="btn secondary">Ingresar a la plataforma</button>
+          <button id="mClaim" class="btn primary">📲 Reclamar por WhatsApp</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<div class="container">
-  <div class="cardWrap">
+  <div class="wrap">
     <div class="head">
-      <div class="brand"><span class="badgeB">B3</span><b>BET300</b></div>
-      <span class="pill">Cartas de beneficios</span>
-      <span class="pill time">⚡ Tiempo limitado <span class="count" id="countdown">--:--</span></span>
-      <span class="pill sound" id="soundToggle">🔊 Sonido: <b id="soundState">ON</b></span>
-      <div class="rightTop">
-        <a id="playNow" class="btnLink" target="_blank" rel="noopener"><span>🎮 Plataforma</span></a>
-        <a id="wpTop" class="btnLink" target="_blank" rel="noopener" style="background:linear-gradient(90deg,#25D366,#9BE69C)">💬 WhatsApp</a>
+      <div class="brandBox">
+        <!-- Logo: archivo en el mismo directorio -->
+        <img class="logo" src="bet300-logo.png" alt="BET300" onerror="this.remove();document.getElementById('brandText').style.display='block'">
+        <div id="brandText" class="brandText" style="display:none">BET300</div>
       </div>
+      <span class="pill">Autogestión habilitada</span>
     </div>
 
-    <div class="grid">
-      <div class="panel">
-        <h1>Elegí una carta y descubrí tu beneficio</h1>
-        <div id="cards" class="cards" aria-live="polite"></div>
-        <p class="muted" style="margin-top:6px">Tip: mejor visual en vertical 📱</p>
-      </div>
-
-      <div class="panel">
-        <div class="center">
-          <div class="stat">
-            <div>
-              <div class="badge" id="badge" style="min-width:120px;height:40px;border-radius:10px;background:linear-gradient(90deg,#7c59ff,#00d1ff);display:grid;place-items:center;font-weight:900">-</div>
-              <div class="smallline" id="stampLine" aria-live="polite"></div>
+    <div class="card">
+      <div class="grid">
+        <div class="stage">
+          <div class="cubeWrap">
+            <div id="cube" class="cube">
+              <div class="face front f-ruleta"><div class="glow"></div><div><h2>Ruleta</h2><p>Una tirada</p></div></div>
+              <div class="face right f-slot"><div class="glow"></div><div><h2>Slot</h2><p>1 giro</p></div></div>
+              <div class="face back f-cofre"><div class="glow"></div><div><h2>Cofre</h2><p>Misterioso</p></div></div>
+              <div class="face left f-memo"><div class="glow"></div><div><h2>Memoplay</h2><p>1 intento</p></div></div>
             </div>
-            <div style="margin-top:6px">
-              <h2 id="title">Tenés 1 intento disponible</h2>
-              <p class="muted" id="subtitle">Los beneficios se aplican a tu <b>próxima carga</b>.</p>
-            </div>
+          </div>
+          <div class="actions" style="margin-top:12px">
+            <button id="btnSpin" class="btn primary">🎲 Girar</button>
           </div>
         </div>
 
-        <div class="panel" style="margin-top:8px">
-          <p style="margin-bottom:6px"><b>Resultado actual</b></p>
-          <p id="resultLine" class="muted">—</p>
+        <div class="side">
+          <h3>📌 Detalles</h3>
+          <div class="row"><span class="k">Estado</span><span class="v" id="st">Listo para jugar</span></div>
+          <div class="row"><span class="k">Resultado</span><span class="v" id="res">—</span></div>
+          <div class="row"><span class="k">Cuenta regresiva</span><span class="v" id="count">—</span></div>
+          <p class="small">Tenés 1 intento por día. El beneficio se acredita con tu próxima carga (mínima).</p>
+          <div class="actions">
+            <button id="btnPlatform" class="btn secondary">Ingresar a la plataforma</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Dock -->
-<div class="dock">
-  <button id="retryBtn" class="btn" style="flex:1;min-width:220px">🔁 Reintentar (si sale “Otra chance”)</button>
-  <a id="platformBtn" class="btn platform" style="flex:1;min-width:220px" target="_blank" rel="noopener">🌐 Plataforma</a>
-</div>
+  <!-- Dock -->
+  <div class="dock">
+    <button id="btnClaim" class="btn primary full" disabled>📲 Reclamar</button>
+  </div>
 
 <script>
-/* ===== Plataforma + WhatsApp por PC (4 parámetros) ===== */
-const PLATFORM_LINKS = {
-  pc1: "https://plataforma-01.ejemplo.com/",
-  pc2: "https://plataforma-02.ejemplo.com/",
-  pc3: "https://plataforma-03.ejemplo.com/",
-  pc4: "https://plataforma-04.ejemplo.com/",
-};
-const WP_NUMBERS = {
-  pc1: "5491111111111",
-  pc2: "5491122222222",
-  pc3: "5491133333333",
-  pc4: "5491144444444",
-};
+/* ========= Parámetros por PC ========= */
 const params = new URLSearchParams(location.search);
-const pcParam = (params.get("pc") || "1").trim();
-const pcKey = "pc" + (pcParam.match(/^[1-4]$/) ? pcParam : "1");
-document.getElementById("playNow").href = PLATFORM_LINKS[pcKey];
-document.getElementById("platformBtn").href = PLATFORM_LINKS[pcKey];
-document.getElementById("wpTop").href = `https://wa.me/${WP_NUMBERS[pcKey]}`;
+const pc = params.get('pc') || '1';
+const pcKey = ['1','2','3','4'].includes(pc) ? pc : '1';
 
-/* ===== Utilidades base ===== */
-const SALT = "bet300-cards-v2";
+const WHATS = {
+  '1': '5491171561685',
+  '2': '5491171561022',
+  '3': '549117331067',
+  '4': '5491135854862'
+};
+// Si el 3 tenía 1171331067, usá exactamente ese:
+WHATS['3'] = '5491171331067';
+
+const PLATFORM = {
+  '1': 'https://bet300.site/html/primer-ingreso',
+  '2': 'https://bet300.site/html/primer-ingreso',
+  '3': 'https://bet300.site/html/primer-ingreso',
+  '4': 'https://bet300.site/html/primer-ingreso'
+};
+
+/* (Opcional) Links específicos de cada juego por PC: completá si querés */
+const GAME_LINKS = {
+  ruleta: {
+    '1': 'https://ruleta-bet300.vercel.app/?pc=1',
+    '2': 'https://ruleta-bet300.vercel.app/?pc=2',
+    '3': 'https://ruleta-bet300.vercel.app/?pc=3',
+    '4': 'https://ruleta-bet300.vercel.app/?pc=4'
+  },
+  slot: {
+    '1': 'https://slot-bet300-ch.vercel.app/?pc=1',
+    '2': 'https://slot-bet300-ch.vercel.app/?pc=2',
+    '3': 'https://slot-bet300-ch.vercel.app/?pc=3',
+    '4': 'https://slot-bet300-ch.vercel.app/?pc=4'
+  },
+  cofre: {
+    '1': 'https://mistery-box-one.vercel.app/?pc=1',
+    '2': 'https://mistery-box-one.vercel.app/?pc=2',
+    '3': 'https://mistery-box-one.vercel.app/?pc=3',
+    '4': 'https://mistery-box-one.vercel.app/?pc=4'
+  },
+  memoplay: {
+    '1': 'https://bet300-memoplay.vercel.app/?pc=1',
+    '2': 'https://bet300-memoplay.vercel.app/?pc=2',
+    '3': 'https://bet300-memoplay.vercel.app/?pc=3',
+    '4': 'https://bet300-memoplay.vercel.app/?pc=4'
+  }
+};
+
+/* ========= Utilidades ========= */
+const SALT = "bet300-cube-v1";
 function ensureDeviceId(){
-  let id = localStorage.getItem('device_id');
-  if(!id){ id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('device_id', id); }
+  let id = localStorage.getItem('cube_device');
+  if(!id){ id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('cube_device', id); }
   return id;
 }
 const DEVICE_ID = ensureDeviceId();
-function todayKey(){const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`}
+
+function todayKey(){
+  const n=new Date();
+  return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
+}
 function tsString(d=new Date()){
   const dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yyyy=d.getFullYear();
   const hh=String(d.getHours()).padStart(2,'0'),mi=String(d.getMinutes()).padStart(2,'0');
@@ -222,222 +238,170 @@ async function sha256hex(msg){
   const buf = await crypto.subtle.digest("SHA-256", enc);
   return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,"0")).join("");
 }
-async function makeClaimCode(label){
-  const base = `${DEVICE_ID}|${todayKey()}|${label}|pc:${pcParam}|${SALT}`;
+async function makeCode(label){
+  const base = `${DEVICE_ID}|${todayKey()}|${label}|pc:${pc}|${SALT}`;
   const hex = await sha256hex(base);
   return hex.slice(0,10).toUpperCase();
 }
-function logAudit(entry){
-  const key='cards_audit';
-  const arr = JSON.parse(localStorage.getItem(key) || "[]");
-  arr.push(entry);
-  localStorage.setItem(key, JSON.stringify(arr).slice(-5000)); // recorta a ~últimos 5k chars
+function confetti(){
+  const el=document.getElementById('confetti'); el.innerHTML='';
+  const n=28; for(let i=0;i<n;i++){
+    const p=document.createElement('i');
+    p.style.left=(Math.random()*100)+'vw';
+    p.style.animationDelay=(Math.random()*0.5)+'s';
+    p.style.background = Math.random()<.5?'linear-gradient(#80ffea,#4e9cff)':'linear-gradient(#ffd166,#ff3d7f)';
+    el.appendChild(p);
+  } setTimeout(()=>{el.innerHTML='';},1800);
 }
 
-/* ===== Sonido ===== */
-let soundOn = true;
-const soundToggle = document.getElementById('soundToggle');
-const soundState  = document.getElementById('soundState');
-const AudioKit = (()=>{ try{
-  const Ctx = window.AudioContext || window.webkitAudioContext;
-  const ctx = new Ctx(); let unlocked=false;
-  function unlock(){ if(!unlocked){ ctx.resume().catch(()=>{}); unlocked=true; } }
-  function click(freq=900,dur=0.035,vol=0.06){
-    const o=ctx.createOscillator(), g=ctx.createGain(); o.type='square'; o.frequency.value=freq; g.gain.value=0; o.connect(g).connect(ctx.destination);
-    const t=ctx.currentTime; g.gain.linearRampToValueAtTime(vol, t+0.005); g.gain.exponentialRampToValueAtTime(0.0001, t+dur);
-    o.start(t); o.stop(t+dur);
-  }
-  function win(){ [660,880,1320].forEach((f,i)=>setTimeout(()=>click(f,0.12,0.09), i*120)); }
-  return {ctx,unlock,click,win};
-}catch(e){return {unlock(){},click(){},win(){}} })();
-document.addEventListener('click',()=>AudioKit.unlock(),{once:true});
-soundToggle.addEventListener('click',()=>{ soundOn=!soundOn; soundState.textContent=soundOn?'ON':'OFF';});
-
-/* ===== Countdown simple (3:59 demo) ===== */
-const endTs = Date.now() + 4*60*1000;
-function tickCountdown(){
-  const ms=endTs-Date.now(); const total=Math.max(0,Math.floor(ms/1000));
-  const m=Math.floor((total%3600)/60), s=total%60;
-  document.getElementById('countdown').textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-}
-setInterval(tickCountdown,1000); tickCountdown();
-
-/* ===== Beneficios (rotan de lugar en cada carga) ===== */
-const PRIZES = [
-  { id:'cofre',  title:'COFRE MISTERIOSO',  desc:'Premio asegurado.', kind:'landing', link:'#cofre' },
-  { id:'memo',   title:'MEMO PLAY',         desc:'Probá suerte en el Memory.',      kind:'landing', link:'#memo' },
-  { id:'otra',   title:'OTRA CHANCE',       desc:'Podés elegir otra carta.',        kind:'retry'   },
-  { id:'extra',  title:'30% EXTRA',         desc:'Pedilo por WhatsApp y aplicá el extra en tu próxima carga.', kind:'whatsapp' },
-  { id:'ruleta', title:'RULETA',            desc:'Accedé a la ruleta de beneficios.', kind:'landing', link:'#ruleta' },
-  { id:'slot',   title:'SLOT',              desc:'Girá por extra en la próxima carga.', kind:'landing', link:'#slot' },
-];
-
-function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
-
-/* ===== UI Refs ===== */
-const cardsEl = document.getElementById('cards');
-const badge   = document.getElementById('badge');
-const title   = document.getElementById('title');
-const subtitle= document.getElementById('subtitle');
-const resultLine = document.getElementById('resultLine');
-const stampEl = document.getElementById('stampLine');
-const retryBtn= document.getElementById('retryBtn');
+/* ========= Estado UI ========= */
+const cube = document.getElementById('cube');
+const faces = cube.querySelectorAll('.face');
+const btnSpin = document.getElementById('btnSpin');
+const btnPlatform = document.getElementById('btnPlatform');
+const btnClaim = document.getElementById('btnClaim');
+const st = document.getElementById('st');
+const res = document.getElementById('res');
+const count = document.getElementById('count');
 
 /* Modal */
 const prizeModal = document.getElementById('prizeModal');
 const mPrize = document.getElementById('mPrize');
 const mCode  = document.getElementById('mCode');
 const mTs    = document.getElementById('mTs');
-const mAction= document.getElementById('mAction');
-const mClose = document.getElementById('mClose');
+const mToGame = document.getElementById('mToGame');
+const mToPlatform = document.getElementById('mToPlatform');
+const mClaim = document.getElementById('mClaim');
 const closeModalX = document.getElementById('closeModal');
-const goPlatform = document.getElementById('goPlatform');
 
-function openModal(prizeLabel, code, ts, prizeObj){
-  mPrize.textContent = prizeLabel;
-  mCode.textContent  = code;
-  mTs.textContent    = ts;
-  goPlatform.href = PLATFORM_LINKS[pcKey];
-
-  // Solo para 30% EXTRA mostramos WhatsApp directo (según PC)
-  if(prizeObj?.id === 'extra'){
-    mAction.style.display='';
-    mAction.onclick = ()=> location.href=`https://wa.me/${WP_NUMBERS[pcKey]}?text=${encodeURIComponent('Hola! Quiero pedir mi 30% EXTRA de la promo de cartas (código '+code+').')}`;
-  }else{
-    mAction.style.display='none';
-  }
-  prizeModal.classList.add('show');
-}
+function openModal(){ prizeModal.classList.add('show'); }
 function closeModal(){ prizeModal.classList.remove('show'); }
-mClose.onclick = closeModal; closeModalX.onclick = closeModal;
+closeModalX.onclick = closeModal;
 prizeModal.addEventListener('click',e=>{ if(e.target===prizeModal) closeModal(); });
 
-/* ===== Cartas ===== */
-let picked=false, winnerIndex=null, mapIds=[];
+/* ========= Lógica del cubo ========= */
+/** Caras en orden de orientación Y: front(0)=ruleta, right(1)=slot, back(2)=cofre, left(3)=memoplay **/
+const PRIZES = [
+  {key:'ruleta',  label:'Tirada en Ruleta',  faceClass:'front'},
+  {key:'slot',    label:'Giro en Slot',      faceClass:'right'},
+  {key:'cofre',   label:'Cofre Misterioso',  faceClass:'back'},
+  {key:'memoplay',label:'Intento en Memoplay',faceClass:'left'}
+];
+let currentIndex = 0; // 0..3
 
-// gira TODAS las cartas luego del premio (nuevo)
-function flipAllAfterPrize(){
-  document.querySelectorAll('.cardInner').forEach(el=>el.classList.add('flip'));
+function setActiveFace(index){
+  faces.forEach(f=>f.classList.remove('active'));
+  const f = faces[index];
+  if(f) f.classList.add('active');
+}
+setActiveFace(0);
+
+function rotationForIndex(index){
+  // index 0=front(0deg), 1=right(-90deg), 2=back(-180deg), 3=left(90deg)
+  const map = [0,-90,-180,90];
+  const deg = map[index];
+  return `rotateY(${deg}deg)`;
 }
 
-function buildCard(prize, index){
-  const wrap = document.createElement('div'); wrap.className='card';
-  const inner = document.createElement('div'); inner.className='cardInner'; wrap.appendChild(inner);
+let spinning=false;
+btnSpin.onclick = async () => {
+  if(spinning) return;
+  if(localStorage.getItem('cube_done')==='1'){ alert('Ya usaste tu intento de hoy.'); return; }
+  spinning=true; st.textContent='Girando…'; btnSpin.disabled=true; btnClaim.disabled=true;
 
-  const back = document.createElement('div'); back.className='face back';
-  back.innerHTML = `<div class="logoBack">BET300</div>`;
-  const front = document.createElement('div'); front.className='face front';
-  front.innerHTML = `<div class="title">${prize.title}</div><div class="desc">${prize.desc}</div>`;
+  // giro “aleatorio”: varias vueltas + destino
+  const target = Math.floor(Math.random()*4); // 0..3
+  const extraTurns = 4 + Math.floor(Math.random()*3); // 4–6 vueltas
+  currentIndex = target;
 
-  inner.appendChild(back); inner.appendChild(front);
+  // anim: simulamos vueltas sumando 360*extra + destino
+  const baseDeg = [0,-90,-180,90][target];
+  const totalDeg = (360*extraTurns) + (baseDeg<0? (360+baseDeg) : baseDeg);
+  cube.style.transform = `rotateY(-${totalDeg}deg)`;
 
-  wrap.addEventListener('click', async ()=>{
-    if(picked && index!==winnerIndex) return;
-    if(soundOn) AudioKit.click(980,.08,.09);
+  // marcar cara activa al final
+  setTimeout(async ()=>{
+    setActiveFace(target);
+    const prize = PRIZES[target];
+    const code = await makeCode(prize.key.toUpperCase());
+    const ts = tsString(new Date());
 
-    // gira SOLO la tocada
-    inner.classList.add('flip');
+    localStorage.setItem('cube_date', todayKey());
+    localStorage.setItem('cube_done','1');
+    localStorage.setItem('cube_result', JSON.stringify({key:prize.key,label:prize.label,ts,code,pc}));
 
-    // define ganador la 1ª vez de manera aleatoria (mantengo lógica original)
-    if(!picked){
-      picked = true;
-      winnerIndex = Math.floor(Math.random()*PRIZES.length);
-      localStorage.setItem('cards_winnerIndex', String(winnerIndex));
-    }
+    res.textContent = prize.label;
+    st.textContent  = '¡Ganaste!';
+    btnClaim.disabled = false;
 
-    // marca winner/loser visualmente
-    const inners=[...document.querySelectorAll('.cardInner')];
-    inners.forEach((el,i)=> el.classList.toggle('winner', i===winnerIndex));
-    inners.forEach((el,i)=> el.classList.toggle('loser',  i!==winnerIndex));
+    // Modal + acciones
+    mPrize.textContent = prize.label;
+    mCode.textContent  = code;
+    mTs.textContent    = ts;
 
-    // otorga premio
-    await grantPrize(PRIZES[winnerIndex]);
+    mToGame.onclick = ()=>{
+      const url = (GAME_LINKS[prize.key] && GAME_LINKS[prize.key][pcKey]) || PLATFORM[pcKey];
+      location.href = url;
+    };
+    mToPlatform.onclick = ()=> location.href = PLATFORM[pcKey];
 
-    // AHORA: gira TODAS para mostrar opciones
-    setTimeout(flipAllAfterPrize, 250);
-  });
+    const msg = `Hola, gané: ${encodeURIComponent(prize.label)} en el Cubo BET300. Código: ${code} · ${ts}`;
+    const wa  = `https://wa.me/${WHATS[pcKey]}?text=${msg}`;
+    mClaim.onclick = ()=> location.href = wa;
+    btnClaim.onclick = ()=> location.href = wa;
 
-  return wrap;
-}
+    openModal(); confetti();
+    spinning=false;
+  }, 1250);
+};
 
-function renderCards(){
-  cardsEl.innerHTML='';
-  const shuffled = shuffle(PRIZES.slice());
-  mapIds = shuffled.map(p=>p.id);
-  shuffled.forEach((p,i)=> cardsEl.appendChild(buildCard(p,i)));
-}
-
-async function grantPrize(prize){
-  const ts   = tsString(new Date());
-  const code = await makeClaimCode(prize.title);
-  localStorage.setItem('cards_done','1');
-  localStorage.setItem('cards_prize', JSON.stringify(prize));
-  localStorage.setItem('cards_code', code);
-  localStorage.setItem('cards_ts', ts);
-
-  badge.textContent = prize.title;
-  title.textContent = prize.title === 'OTRA CHANCE' ? '🎯 ¡Otra chance habilitada!' : `🎉 ${prize.title}`;
-  subtitle.innerHTML = (prize.id==='extra') ? 'Pedilo por <b>WhatsApp</b>.' : 'Usalo desde su landing o plataforma.';
-  resultLine.textContent = `Resultado: ${prize.title}`;
-  stampEl.textContent = `Código: ${code} · ${ts}`;
-
-  // log auditoría
-  logAudit({when:Date.now(), prize:prize.id, code, map:mapIds});
-
-  // botón “reintentar” solo si sale otra chance
-  retryBtn.disabled = (prize.id!=='otra');
-
-  if(soundOn) AudioKit.win();
-
-  // Modal con acción especial si corresponde
-  openModal(prize.title, code, ts, prize);
-}
-
-function showSaved(){
-  const done=localStorage.getItem('cards_done')==='1';
-  const saved=localStorage.getItem('cards_prize');
-  if(done && saved){
-    const p=JSON.parse(saved);
-    const code = localStorage.getItem('cards_code') || '—';
-    const ts   = localStorage.getItem('cards_ts')   || tsString();
-    badge.textContent=p.title; title.textContent = p.title==='OTRA CHANCE'?'🎯 ¡Otra chance habilitada!':`🎉 ${p.title}`;
-    subtitle.innerHTML = (p.id==='extra') ? 'Pedilo por <b>WhatsApp</b>.' : 'Usalo desde su landing o plataforma.';
-    stampEl.textContent=`Código: ${code} · ${ts}`;
-    resultLine.textContent=`Resultado: ${p.title}`;
-    retryBtn.disabled = (p.id!=='otra');
-
-    // visual: todas dadas vuelta para mostrar opciones
-    setTimeout(flipAllAfterPrize, 0);
+/* ========= 1 intento por día & contador ========= */
+function restoreDaily(){
+  const today=todayKey(); const stored=localStorage.getItem('cube_date');
+  if(stored && stored!==today){
+    localStorage.removeItem('cube_done');
+    localStorage.removeItem('cube_result');
+    localStorage.setItem('cube_date',today);
+  } else if(!stored){
+    localStorage.setItem('cube_date',today);
   }
 }
+function restoreResult(){
+  const done=localStorage.getItem('cube_done')==='1'; const saved=localStorage.getItem('cube_result');
+  if(done && saved){
+    const r=JSON.parse(saved);
+    res.textContent=r.label||'—';
+    st.textContent='Premio obtenido';
+    btnSpin.disabled=true; btnClaim.disabled=false;
+    const msg = `Hola, gané: ${encodeURIComponent(r.label)} en el Cubo BET300. Código: ${r.code} · ${r.ts}`;
+    const wa  = `https://wa.me/${WHATS[pcKey]}?text=${msg}`;
+    btnClaim.onclick=()=>location.href=wa;
+  }
+}
+function endOfDay(){const n=new Date();const end=new Date(n.getFullYear(),n.getMonth(),n.getDate(),23,59,0,0).getTime();
+  return end>Date.now()?end:new Date(n.getFullYear(),n.getMonth(),n.getDate()+1,23,59,0,0).getTime()}
+function tickCountdown(){
+  const ms=endOfDay()-Date.now(); const total=Math.max(0,Math.floor(ms/1000));
+  const h=Math.floor(total/3600), m=Math.floor((total%3600)/60), s=total%60;
+  count.textContent=h>0?`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`:`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+setInterval(tickCountdown,1000);
 
-retryBtn.addEventListener('click', ()=>{
-  const done=localStorage.getItem('cards_done')==='1';
-  const saved=localStorage.getItem('cards_prize');
-  if(!(done && saved)) return;
+/* ========= Botones extras ========= */
+btnPlatform.onclick = ()=> location.href = PLATFORM[pcKey];
 
-  const p=JSON.parse(saved);
-  if(p.id!=='otra'){ alert('Solo disponible si salió "Otra chance".'); return; }
-
-  // reset del intento (conservar día)
-  localStorage.removeItem('cards_done');
-  localStorage.removeItem('cards_prize');
-  localStorage.removeItem('cards_code');
-  localStorage.removeItem('cards_ts');
-
-  // reset visual
-  picked=false; winnerIndex=null;
-  renderCards();
-  badge.textContent='-'; title.textContent='Tenés 1 intento disponible';
-  subtitle.innerHTML='Los beneficios se aplican a tu <b>próxima carga</b>.';
-  stampEl.textContent=''; resultLine.textContent='—';
-  retryBtn.disabled=true;
-});
-
-/* ===== Init ===== */
+/* ========= Init ========= */
 function init(){
-  renderCards();
-  showSaved();
+  restoreDaily(); restoreResult(); tickCountdown();
+  // set tamaño variable para z del cubo
+  const rect = document.querySelector('.cubeWrap').getBoundingClientRect();
+  const size = Math.min(rect.width, rect.height);
+  cube.style.setProperty('--size', size+'px');
+  window.addEventListener('resize', ()=>{
+    const r = document.querySelector('.cubeWrap').getBoundingClientRect();
+    const s = Math.min(r.width, r.height);
+    cube.style.setProperty('--size', s+'px');
+  });
 }
 init();
 </script>
