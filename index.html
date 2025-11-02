@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<title>BET300 · Promo Cubo</title>
+<title>BET300 · Selector Arcade</title>
 <meta name="theme-color" content="#0b1120"/>
 <style>
   :root{
     --bg:#0b1120; --panel:#0f172a; --panel2:#0b1326; --border:#1e2a4a;
     --text:#e8ecff; --muted:#9aa3c7; --accent:#49b6ff; --gold:#e8c25e; --ok:#25d366;
-    --cube:#111a33; --glow:#7c59ff; --cyan:#22d3ee;
+    --neon1:#7c59ff; --neon2:#22d3ee; --tile:#121c3a; --tile2:#0e1630;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);font:16px/1.4 system-ui,-apple-system,Segoe UI,Roboto}
-  .wrap{max-width:960px;margin:18px auto 90px;padding:0 14px}
+  .wrap{max-width:980px;margin:18px auto 88px;padding:0 14px}
   .head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
   .brandBox{display:flex;align-items:center;gap:10px}
   .logo{height:48px;display:block}
@@ -27,43 +27,44 @@
   .grid{display:grid;gap:12px}
   @media(min-width:900px){.grid{grid-template-columns:1.05fr .95fr}}
 
-  .stage{display:grid;place-items:center;background:
+  /* STAGE */
+  .stage{background:
     radial-gradient(80% 120% at 50% 0%,rgba(124,89,255,.12),transparent),
     radial-gradient(60% 100% at 0% 100%,rgba(34,211,238,.10),transparent),
     var(--panel2);
-    border:1px solid var(--border);border-radius:16px;min-height:360px;position:relative;overflow:hidden}
+    border:1px solid var(--border);border-radius:16px;padding:14px}
+  .hint{color:var(--muted);font-size:12px;text-align:center;margin-top:8px}
+
+  /* PRIZE GRID */
+  .grid4{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:560px;margin:6px auto}
+  .tile{
+    position:relative;overflow:hidden;border-radius:16px;padding:16px;text-align:center;
+    background:linear-gradient(180deg,var(--tile),var(--tile2));
+    border:1px solid #263156; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 12px 36px rgba(0,0,0,.45);
+    min-height:118px; display:grid; place-items:center;
+  }
+  .tile h2{margin:0;font-size:20px;letter-spacing:.5px}
+  .tile p{margin:6px 0 0;color:var(--muted);font-size:12px}
+  .tile .icon{font-size:30px;margin-bottom:4px;opacity:.95}
+  .tile:before{
+    content:""; position:absolute; inset:-2px; border-radius:18px; pointer-events:none;
+    box-shadow:0 0 0 0 rgba(124,89,255,.0), 0 0 0 0 rgba(34,211,238,.0); transition:box-shadow .2s;
+  }
+  .tile.active:before{
+    box-shadow:0 0 12px 2px rgba(124,89,255,.55), 0 0 22px 6px rgba(34,211,238,.35);
+  }
+  .tile.win{outline:2px solid rgba(255,210,96,.65);}
+
+  /* BUTTONS */
+  .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
   .btn{appearance:none;border:none;cursor:pointer;padding:13px 16px;border-radius:14px;font-weight:800}
   .btn.primary{background:linear-gradient(90deg,#ffd48a,#e9b84f);color:#09121f;box-shadow:0 10px 24px rgba(233,184,79,.25)}
   .btn.secondary{background:#1fbf61;color:#07131e;border:1px solid rgba(255,255,255,.08);box-shadow:0 8px 20px rgba(31,191,97,.25)}
   .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}
-  .actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:10px}
+  .btn.full{width:100%}
+  .btn:disabled{opacity:.6;cursor:not-allowed}
 
-  /* CUBE 3D */
-  .cubeWrap{width:min(420px,88vw);height:min(420px,88vw);max-height:420px;perspective:1200px}
-  .cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform 1200ms cubic-bezier(.22,1,.36,1)}
-  .face{
-    position:absolute;inset:0;display:grid;place-items:center;border-radius:16px;
-    background:linear-gradient(180deg,#0f1a39,#0b132a);
-    border:1px solid #2a3660; box-shadow:inset 0 0 0 1px rgba(255,255,255,.04),0 20px 50px rgba(0,0,0,.45);
-  }
-  .face h2{margin:0;font-weight:900;letter-spacing:.6px;text-transform:uppercase}
-  .face p{margin:6px 0 0;color:var(--muted);font-size:13px}
-  /* colores por cara */
-  .f-ruleta {background:linear-gradient(180deg,#1b2548,#121b36)}
-  .f-slot   {background:linear-gradient(180deg,#1a2d3f,#102235)}
-  .f-cofre  {background:linear-gradient(180deg,#2a243f,#171531)}
-  .f-memo   {background:linear-gradient(180deg,#203241,#142536)}
-  .glow{position:absolute;inset:-2px;border-radius:18px;box-shadow:0 0 28px rgba(124,89,255,.35), 0 0 18px rgba(34,211,238,.25);opacity:0;transition:opacity .25s}
-  .face.active .glow{opacity:1}
-
-  /* posicionar caras (cubo de 4 caras alrededor del eje Y) */
-  .cube .face{--z: calc(var(--size,50vmin)/2); }
-  .front {transform:translateZ(var(--z))}
-  .right {transform:rotateY(90deg) translateZ(var(--z))}
-  .back  {transform:rotateY(180deg) translateZ(var(--z))}
-  .left  {transform:rotateY(-90deg) translateZ(var(--z))}
-
-  /* panel lateral */
+  /* SIDE PANEL */
   .side{background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:12px}
   .side h3{margin:0 0 8px}
   .row{display:flex;justify-content:space-between;align-items:center;margin:6px 0;padding:8px;border:1px dashed var(--border);border-radius:12px}
@@ -71,12 +72,12 @@
   .v{font-weight:800}
   .small{font-size:12px;color:var(--muted)}
 
-  /* Confetti */
+  /* CONFETTI */
   .confetti{position:fixed;inset:0;pointer-events:none;z-index:40}
   .confetti i{position:absolute;top:-20px;width:10px;height:14px;border-radius:2px;opacity:0;animation:confFall 1.6s linear forwards}
   @keyframes confFall{8%{opacity:1}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}
 
-  /* Modal */
+  /* MODAL */
   .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(4,6,14,.6);backdrop-filter:blur(4px);z-index:60}
   .modal.show{display:flex}
   .modalCard{width:min(520px,92vw);background:var(--panel2);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:0 20px 50px rgba(0,0,0,.45)}
@@ -85,85 +86,78 @@
   .closeX{margin-left:auto;cursor:pointer;opacity:.8}
   .closeX:hover{opacity:1}
 
-  /* Dock */
+  /* DOCK */
   .dock{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(180deg, rgba(11,15,30,0) 0%, rgba(11,15,30,.85) 22%, rgba(11,15,30,.95) 100%);
     padding:8px 10px 10px;display:flex;gap:8px}
-  .btn.full{width:100%}
-
-  /* Compacto móvil */
   @media(max-width:420px){
-    .cubeWrap{height:78vw;max-height:none}
-    .face h2{font-size:18px}
+    .tile{min-height:108px}
+    .tile h2{font-size:18px}
+    .logo{height:42px}
   }
 </style>
 </head>
 <body>
-  <div id="confetti" class="confetti" aria-hidden="true"></div>
+<div id="confetti" class="confetti" aria-hidden="true"></div>
 
-  <!-- MODAL -->
-  <div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modalCard">
-      <div class="modalHead">
-        <h3 id="modalTitle">🎁 Beneficio obtenido</h3>
-        <span id="closeModal" class="closeX">✖</span>
+<!-- MODAL -->
+<div id="prizeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modalCard">
+    <div class="modalHead">
+      <h3 id="modalTitle">🎁 Beneficio obtenido</h3>
+      <span id="closeModal" class="closeX">✖</span>
+    </div>
+    <div class="modalBody">
+      <div class="row"><span class="k">Promo</span><span class="v" id="mPrize">—</span></div>
+      <div class="row"><span class="k">Código</span><span class="v" id="mCode">—</span></div>
+      <div class="row"><span class="k">Fecha/Hora</span><span class="v" id="mTs">—</span></div>
+      <div class="actions">
+        <button id="mToGame" class="btn ghost">Ir al detalle</button>
+        <button id="mToPlatform" class="btn secondary">Ingresar a la plataforma</button>
+        <button id="mClaim" class="btn primary">📲 Reclamar por WhatsApp</button>
       </div>
-      <div class="modalBody">
-        <div class="row"><span class="k">Promo</span><span class="v" id="mPrize">—</span></div>
-        <div class="row"><span class="k">Código</span><span class="v" id="mCode">—</span></div>
-        <div class="row"><span class="k">Fecha/Hora</span><span class="v" id="mTs">—</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="head">
+    <div class="brandBox">
+      <img class="logo" src="bet300-logo.png" alt="BET300"
+           onerror="this.remove();document.getElementById('brandText').style.display='block'">
+      <div id="brandText" class="brandText" style="display:none">BET300</div>
+    </div>
+    <span class="pill">Autogestión habilitada</span>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div class="stage">
+        <div class="grid4" id="grid">
+          <!-- Se construyen por JS para rotar posiciones -->
+        </div>
         <div class="actions">
-          <button id="mToGame" class="btn ghost">Ir al detalle</button>
-          <button id="mToPlatform" class="btn secondary">Ingresar a la plataforma</button>
-          <button id="mClaim" class="btn primary">📲 Reclamar por WhatsApp</button>
+          <button id="btnPlay" class="btn primary">🎯 Jugar</button>
+        </div>
+        <div class="hint">Tenés 1 intento por día. El beneficio se acredita con tu próxima carga (mínima).</div>
+      </div>
+
+      <div class="side">
+        <h3>📌 Detalles</h3>
+        <div class="row"><span class="k">Estado</span><span class="v" id="st">Listo para jugar</span></div>
+        <div class="row"><span class="k">Resultado</span><span class="v" id="res">—</span></div>
+        <div class="row"><span class="k">Cuenta regresiva</span><span class="v" id="count">—</span></div>
+        <div class="actions">
+          <button id="btnPlatform" class="btn secondary">Ingresar a la plataforma</button>
         </div>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="wrap">
-    <div class="head">
-      <div class="brandBox">
-        <!-- Logo: archivo en el mismo directorio -->
-        <img class="logo" src="bet300-logo.png" alt="BET300" onerror="this.remove();document.getElementById('brandText').style.display='block'">
-        <div id="brandText" class="brandText" style="display:none">BET300</div>
-      </div>
-      <span class="pill">Autogestión habilitada</span>
-    </div>
-
-    <div class="card">
-      <div class="grid">
-        <div class="stage">
-          <div class="cubeWrap">
-            <div id="cube" class="cube">
-              <div class="face front f-ruleta"><div class="glow"></div><div><h2>Ruleta</h2><p>Una tirada</p></div></div>
-              <div class="face right f-slot"><div class="glow"></div><div><h2>Slot</h2><p>1 giro</p></div></div>
-              <div class="face back f-cofre"><div class="glow"></div><div><h2>Cofre</h2><p>Misterioso</p></div></div>
-              <div class="face left f-memo"><div class="glow"></div><div><h2>Memoplay</h2><p>1 intento</p></div></div>
-            </div>
-          </div>
-          <div class="actions" style="margin-top:12px">
-            <button id="btnSpin" class="btn primary">🎲 Girar</button>
-          </div>
-        </div>
-
-        <div class="side">
-          <h3>📌 Detalles</h3>
-          <div class="row"><span class="k">Estado</span><span class="v" id="st">Listo para jugar</span></div>
-          <div class="row"><span class="k">Resultado</span><span class="v" id="res">—</span></div>
-          <div class="row"><span class="k">Cuenta regresiva</span><span class="v" id="count">—</span></div>
-          <p class="small">Tenés 1 intento por día. El beneficio se acredita con tu próxima carga (mínima).</p>
-          <div class="actions">
-            <button id="btnPlatform" class="btn secondary">Ingresar a la plataforma</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Dock -->
-  <div class="dock">
-    <button id="btnClaim" class="btn primary full" disabled>📲 Reclamar</button>
-  </div>
+<!-- Dock -->
+<div class="dock">
+  <button id="btnClaim" class="btn primary full" disabled>📲 Reclamar</button>
+</div>
 
 <script>
 /* ========= Parámetros por PC ========= */
@@ -174,60 +168,31 @@ const pcKey = ['1','2','3','4'].includes(pc) ? pc : '1';
 const WHATS = {
   '1': '5491171561685',
   '2': '5491171561022',
-  '3': '549117331067',
+  '3': '5491171331067',
   '4': '5491135854862'
 };
-// Si el 3 tenía 1171331067, usá exactamente ese:
-WHATS['3'] = '5491171331067';
-
 const PLATFORM = {
   '1': 'https://bet300.site/html/primer-ingreso',
   '2': 'https://bet300.site/html/primer-ingreso',
   '3': 'https://bet300.site/html/primer-ingreso',
   '4': 'https://bet300.site/html/primer-ingreso'
 };
-
-/* (Opcional) Links específicos de cada juego por PC: completá si querés */
 const GAME_LINKS = {
-  ruleta: {
-    '1': 'https://ruleta-bet300.vercel.app/?pc=1',
-    '2': 'https://ruleta-bet300.vercel.app/?pc=2',
-    '3': 'https://ruleta-bet300.vercel.app/?pc=3',
-    '4': 'https://ruleta-bet300.vercel.app/?pc=4'
-  },
-  slot: {
-    '1': 'https://slot-bet300-ch.vercel.app/?pc=1',
-    '2': 'https://slot-bet300-ch.vercel.app/?pc=2',
-    '3': 'https://slot-bet300-ch.vercel.app/?pc=3',
-    '4': 'https://slot-bet300-ch.vercel.app/?pc=4'
-  },
-  cofre: {
-    '1': 'https://mistery-box-one.vercel.app/?pc=1',
-    '2': 'https://mistery-box-one.vercel.app/?pc=2',
-    '3': 'https://mistery-box-one.vercel.app/?pc=3',
-    '4': 'https://mistery-box-one.vercel.app/?pc=4'
-  },
-  memoplay: {
-    '1': 'https://bet300-memoplay.vercel.app/?pc=1',
-    '2': 'https://bet300-memoplay.vercel.app/?pc=2',
-    '3': 'https://bet300-memoplay.vercel.app/?pc=3',
-    '4': 'https://bet300-memoplay.vercel.app/?pc=4'
-  }
+  ruleta:  {'1':'https://ruleta-bet300.vercel.app/?pc=1','2':'https://ruleta-bet300.vercel.app/?pc=2','3':'https://ruleta-bet300.vercel.app/?pc=3','4':'https://ruleta-bet300.vercel.app/?pc=4'},
+  slot:    {'1':'https://slot-bet300-ch.vercel.app/?pc=1','2':'https://slot-bet300-ch.vercel.app/?pc=2','3':'https://slot-bet300-ch.vercel.app/?pc=3','4':'https://slot-bet300-ch.vercel.app/?pc=4'},
+  cofre:   {'1':'https://mistery-box-one.vercel.app/?pc=1','2':'https://mistery-box-one.vercel.app/?pc=2','3':'https://mistery-box-one.vercel.app/?pc=3','4':'https://mistery-box-one.vercel.app/?pc=4'},
+  memoplay:{'1':'https://bet300-memoplay.vercel.app/?pc=1','2':'https://bet300-memoplay.vercel.app/?pc=2','3':'https://bet300-memoplay.vercel.app/?pc=3','4':'https://bet300-memoplay.vercel.app/?pc=4'}
 };
 
 /* ========= Utilidades ========= */
-const SALT = "bet300-cube-v1";
+const SALT = "bet300-arcade-v1";
 function ensureDeviceId(){
-  let id = localStorage.getItem('cube_device');
-  if(!id){ id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('cube_device', id); }
+  let id = localStorage.getItem('arcade_device');
+  if(!id){ id = (crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2,8)}`); localStorage.setItem('arcade_device', id); }
   return id;
 }
 const DEVICE_ID = ensureDeviceId();
-
-function todayKey(){
-  const n=new Date();
-  return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`;
-}
+function todayKey(){const n=new Date();return `${n.getFullYear()}-${String(n.getMonth()+1).padStart(2,'0')}-${String(n.getDate()).padStart(2,'0')}`}
 function tsString(d=new Date()){
   const dd=String(d.getDate()).padStart(2,'0'),mm=String(d.getMonth()+1).padStart(2,'0'),yyyy=d.getFullYear();
   const hh=String(d.getHours()).padStart(2,'0'),mi=String(d.getMinutes()).padStart(2,'0');
@@ -245,19 +210,18 @@ async function makeCode(label){
 }
 function confetti(){
   const el=document.getElementById('confetti'); el.innerHTML='';
-  const n=28; for(let i=0;i<n;i++){
+  const n=30; for(let i=0;i<n;i++){
     const p=document.createElement('i');
     p.style.left=(Math.random()*100)+'vw';
     p.style.animationDelay=(Math.random()*0.5)+'s';
     p.style.background = Math.random()<.5?'linear-gradient(#80ffea,#4e9cff)':'linear-gradient(#ffd166,#ff3d7f)';
     el.appendChild(p);
-  } setTimeout(()=>{el.innerHTML='';},1800);
+  } setTimeout(()=>{el.innerHTML='';},1700);
 }
 
-/* ========= Estado UI ========= */
-const cube = document.getElementById('cube');
-const faces = cube.querySelectorAll('.face');
-const btnSpin = document.getElementById('btnSpin');
+/* ========= UI refs ========= */
+const gridEl = document.getElementById('grid');
+const btnPlay = document.getElementById('btnPlay');
 const btnPlatform = document.getElementById('btnPlatform');
 const btnClaim = document.getElementById('btnClaim');
 const st = document.getElementById('st');
@@ -273,107 +237,120 @@ const mToGame = document.getElementById('mToGame');
 const mToPlatform = document.getElementById('mToPlatform');
 const mClaim = document.getElementById('mClaim');
 const closeModalX = document.getElementById('closeModal');
-
 function openModal(){ prizeModal.classList.add('show'); }
 function closeModal(){ prizeModal.classList.remove('show'); }
 closeModalX.onclick = closeModal;
 prizeModal.addEventListener('click',e=>{ if(e.target===prizeModal) closeModal(); });
 
-/* ========= Lógica del cubo ========= */
-/** Caras en orden de orientación Y: front(0)=ruleta, right(1)=slot, back(2)=cofre, left(3)=memoplay **/
+/* ========= Data de premios ========= */
 const PRIZES = [
-  {key:'ruleta',  label:'Tirada en Ruleta',  faceClass:'front'},
-  {key:'slot',    label:'Giro en Slot',      faceClass:'right'},
-  {key:'cofre',   label:'Cofre Misterioso',  faceClass:'back'},
-  {key:'memoplay',label:'Intento en Memoplay',faceClass:'left'}
+  {key:'ruleta',  label:'Tirada en Ruleta',  icon:'🎯'},
+  {key:'slot',    label:'Giro en Slot',      icon:'🎰'},
+  {key:'cofre',   label:'Cofre Misterioso',  icon:'🗝️'},
+  {key:'memoplay',label:'Intento en Memoplay',icon:'🧠'}
 ];
-let currentIndex = 0; // 0..3
 
-function setActiveFace(index){
-  faces.forEach(f=>f.classList.remove('active'));
-  const f = faces[index];
-  if(f) f.classList.add('active');
+/* Construir grilla (con posiciones aleatorias cada carga) */
+function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+let layout = shuffle([...PRIZES]); // reordenado
+function renderGrid(){
+  gridEl.innerHTML = layout.map(p=>`
+    <div class="tile" data-key="${p.key}">
+      <div class="icon">${p.icon}</div>
+      <div>
+        <h2>${p.label.split(' ')[0]}</h2>
+        <p>${p.label.includes('Cofre')?'Misterioso':p.label.replace(/^[^ ]+ /,'')}</p>
+      </div>
+    </div>
+  `).join('');
 }
-setActiveFace(0);
+renderGrid();
 
-function rotationForIndex(index){
-  // index 0=front(0deg), 1=right(-90deg), 2=back(-180deg), 3=left(90deg)
-  const map = [0,-90,-180,90];
-  const deg = map[index];
-  return `rotateY(${deg}deg)`;
-}
+/* Barrido de neón y selección */
+let playing=false;
+btnPlay.onclick = async ()=>{
+  if(playing) return;
+  if(localStorage.getItem('arcade_done')==='1'){ alert('Ya usaste tu intento de hoy.'); return; }
+  playing=true; st.textContent='Seleccionando…'; btnPlay.disabled=true; btnClaim.disabled=true;
 
-let spinning=false;
-btnSpin.onclick = async () => {
-  if(spinning) return;
-  if(localStorage.getItem('cube_done')==='1'){ alert('Ya usaste tu intento de hoy.'); return; }
-  spinning=true; st.textContent='Girando…'; btnSpin.disabled=true; btnClaim.disabled=true;
+  const tiles = [...document.querySelectorAll('.tile')];
+  let idx = 0;
+  let cycles = 2 + Math.floor(Math.random()*2); // 2–3 vueltas completas
+  const target = Math.floor(Math.random()*tiles.length);
 
-  // giro “aleatorio”: varias vueltas + destino
-  const target = Math.floor(Math.random()*4); // 0..3
-  const extraTurns = 4 + Math.floor(Math.random()*3); // 4–6 vueltas
-  currentIndex = target;
+  function setActive(i){
+    tiles.forEach(t=>t.classList.remove('active'));
+    tiles[i].classList.add('active');
+  }
 
-  // anim: simulamos vueltas sumando 360*extra + destino
-  const baseDeg = [0,-90,-180,90][target];
-  const totalDeg = (360*extraTurns) + (baseDeg<0? (360+baseDeg) : baseDeg);
-  cube.style.transform = `rotateY(-${totalDeg}deg)`;
+  let steps = cycles*tiles.length + target;
+  const base = 90; // ms
+  function step(){
+    setActive(idx % tiles.length);
+    idx++;
+    steps--;
+    const remain = steps;
+    const speed = base + (Math.max(0, (tiles.length*2 - remain))*22); // desacelera
+    if(steps>=0) setTimeout(step, speed);
+    else finish((idx-1)%tiles.length);
+  }
+  step();
 
-  // marcar cara activa al final
-  setTimeout(async ()=>{
-    setActiveFace(target);
-    const prize = PRIZES[target];
+  async function finish(winIndex){
+    const tiles2 = [...document.querySelectorAll('.tile')];
+    tiles2.forEach(t=>t.classList.remove('active','win'));
+    const winner = tiles2[winIndex];
+    winner.classList.add('win');
+    const key = winner.getAttribute('data-key');
+    const prize = PRIZES.find(p=>p.key===key);
+
     const code = await makeCode(prize.key.toUpperCase());
     const ts = tsString(new Date());
 
-    localStorage.setItem('cube_date', todayKey());
-    localStorage.setItem('cube_done','1');
-    localStorage.setItem('cube_result', JSON.stringify({key:prize.key,label:prize.label,ts,code,pc}));
+    localStorage.setItem('arcade_date', todayKey());
+    localStorage.setItem('arcade_done','1');
+    localStorage.setItem('arcade_result', JSON.stringify({key:prize.key,label:prize.label,ts,code,pc}));
 
     res.textContent = prize.label;
     st.textContent  = '¡Ganaste!';
     btnClaim.disabled = false;
 
-    // Modal + acciones
     mPrize.textContent = prize.label;
     mCode.textContent  = code;
     mTs.textContent    = ts;
 
     mToGame.onclick = ()=>{
-      const url = (GAME_LINKS[prize.key] && GAME_LINKS[prize.key][pcKey]) || PLATFORM[pcKey];
+      const url = GAME_LINKS[prize.key]?.[pcKey] || PLATFORM[pcKey];
       location.href = url;
     };
     mToPlatform.onclick = ()=> location.href = PLATFORM[pcKey];
 
-    const msg = `Hola, gané: ${encodeURIComponent(prize.label)} en el Cubo BET300. Código: ${code} · ${ts}`;
+    const msg = `Hola, gané: ${encodeURIComponent(prize.label)} en BET300. Código: ${code} · ${ts}`;
     const wa  = `https://wa.me/${WHATS[pcKey]}?text=${msg}`;
     mClaim.onclick = ()=> location.href = wa;
     btnClaim.onclick = ()=> location.href = wa;
 
     openModal(); confetti();
-    spinning=false;
-  }, 1250);
+    playing=false;
+  }
 };
 
-/* ========= 1 intento por día & contador ========= */
+/* 1 intento por día + countdown */
 function restoreDaily(){
-  const today=todayKey(); const stored=localStorage.getItem('cube_date');
+  const today=todayKey(); const stored=localStorage.getItem('arcade_date');
   if(stored && stored!==today){
-    localStorage.removeItem('cube_done');
-    localStorage.removeItem('cube_result');
-    localStorage.setItem('cube_date',today);
-  } else if(!stored){
-    localStorage.setItem('cube_date',today);
-  }
+    localStorage.removeItem('arcade_done'); localStorage.removeItem('arcade_result');
+    localStorage.setItem('arcade_date',today);
+  } else if(!stored){ localStorage.setItem('arcade_date',today); }
 }
 function restoreResult(){
-  const done=localStorage.getItem('cube_done')==='1'; const saved=localStorage.getItem('cube_result');
+  const done=localStorage.getItem('arcade_done')==='1'; const saved=localStorage.getItem('arcade_result');
   if(done && saved){
     const r=JSON.parse(saved);
     res.textContent=r.label||'—';
     st.textContent='Premio obtenido';
-    btnSpin.disabled=true; btnClaim.disabled=false;
-    const msg = `Hola, gané: ${encodeURIComponent(r.label)} en el Cubo BET300. Código: ${r.code} · ${r.ts}`;
+    btnPlay.disabled=true; btnClaim.disabled=false;
+    const msg = `Hola, gané: ${encodeURIComponent(r.label)} en BET300. Código: ${r.code} · ${r.ts}`;
     const wa  = `https://wa.me/${WHATS[pcKey]}?text=${msg}`;
     btnClaim.onclick=()=>location.href=wa;
   }
@@ -387,21 +364,12 @@ function tickCountdown(){
 }
 setInterval(tickCountdown,1000);
 
-/* ========= Botones extras ========= */
+/* Botones extra */
 btnPlatform.onclick = ()=> location.href = PLATFORM[pcKey];
 
-/* ========= Init ========= */
+/* Init */
 function init(){
   restoreDaily(); restoreResult(); tickCountdown();
-  // set tamaño variable para z del cubo
-  const rect = document.querySelector('.cubeWrap').getBoundingClientRect();
-  const size = Math.min(rect.width, rect.height);
-  cube.style.setProperty('--size', size+'px');
-  window.addEventListener('resize', ()=>{
-    const r = document.querySelector('.cubeWrap').getBoundingClientRect();
-    const s = Math.min(r.width, r.height);
-    cube.style.setProperty('--size', s+'px');
-  });
 }
 init();
 </script>
